@@ -32,3 +32,5 @@
     who = shortlog -s --
 [credential]
     helper = osxkeychain
+[push]
+    default = simple    
