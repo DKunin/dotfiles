@@ -1,0 +1,18 @@
+alias mkdir='mkdir -p'
+alias chown='chown -Rv'
+alias chmod='chmod -Rv'
+alias grep='grep --color=always'
+alias tar='tar --verbose'
+alias tmux='tmux -2'
+alias psaux='ps aux'
+alias psl='psaux|more'
+alias psg='psaux|grep'
+alias more='less'
+
+# Requires specific structure
+alias code='cd ~/Projects'
+
+# Specific soft needs to be installed
+alias sb='stepback'
+alias ob='openbranch'
+alias ci='prepci'
