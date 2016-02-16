@@ -13,6 +13,5 @@ source $HOME/.aliases
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+export NODE_PATH="$HOME/.nvm/versions/node/v4.0.0/bin/nodes"
 export PROJECTS="$HOME/Projects"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
