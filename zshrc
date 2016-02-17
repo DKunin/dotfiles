@@ -13,5 +13,5 @@ source $HOME/.aliases
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export NODE_PATH="$HOME/.nvm/versions/node/v4.0.0/bin/nodes"
+export NODE_PATH="$HOME/.nvm/versions/node/v4.0.0/bin/node"
 export PROJECTS="$HOME/Projects"
