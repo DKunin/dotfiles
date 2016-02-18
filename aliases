@@ -11,6 +11,7 @@ alias more='less'
 
 # Requires specific structure
 alias code='cd ~/Projects'
+alias down='cd ~/Downloads'
 
 # Specific soft needs to be installed
 alias sb='stepback'
