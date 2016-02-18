@@ -8,10 +8,12 @@ alias psaux='ps aux'
 alias psl='psaux|more'
 alias psg='psaux|grep'
 alias more='less'
+alias meteo='curl -4 http://wttr.in/Moscow'
 
 # Requires specific structure
-alias code='cd ~/Projects'
+alias code='cd $PROJECTS'
 alias down='cd ~/Downloads'
+alias dot='cd $PROJECTS/dotfiles'
 
 # Specific soft needs to be installed
 alias sb='stepback'
