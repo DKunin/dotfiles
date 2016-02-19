@@ -9,6 +9,8 @@ alias psl='psaux|more'
 alias psg='psaux|grep'
 alias more='less'
 alias meteo='curl -4 http://wttr.in/Moscow'
+alias nr='cat package.json | tr -d " \t\n\r" | egrep -o 'scripts\"\:\{(.*?)\}' | sed -e "s/scripts\"\://g" | sed -e "s/{//g" | egrep -o '\"(.*?):\"' | sed -e 's/\"//g' | sed -e 's/\://g' | sed -e 's/\,//g' | sort | ipt | xargs npm run'
+alias packver='cat package.json | tr -d " \t\n\r" | egrep -o "version\"\:(.*?)," | cut -d":" -f 2 |  tr -d "\","'
 
 # Requires specific structure
 alias code='cd $PROJECTS'
@@ -16,7 +18,7 @@ alias down='cd ~/Downloads'
 alias dot='cd $PROJECTS/dotfiles'
 
 # Specific soft needs to be installed
-alias sb='stepback'
+alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ob='openbranch'
 alias ci='prepci'
 alias diffancy='git diff --color | diff-so-fancy'

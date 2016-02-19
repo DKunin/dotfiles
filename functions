@@ -28,3 +28,12 @@ extract() {
      echo "'$1' is not a valid file to extract"
   fi
 }
+
+function iseek() {
+    cd $(ls -a -d */ .. | ipt)
+    iseek
+}
+
+function jsonprop() {
+  'cat '$1' | tr -d " \t\n\r" | egrep -o "'$2'\"\:(.*?)," | cut -d":" -f 2 |  tr -d "\","'
+}
