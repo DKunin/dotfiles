@@ -8,9 +8,12 @@ alias psaux='ps aux'
 alias psl='psaux|more'
 alias psg='psaux|grep'
 alias more='less'
+alias topc='top -o vsize'
+alias topm='top -o cpu'
 alias meteo='curl -4 http://wttr.in/Moscow'
-alias nr='cat package.json | tr -d " \t\n\r" | egrep -o 'scripts\"\:\{(.*?)\}' | sed -e "s/scripts\"\://g" | sed -e "s/{//g" | egrep -o '\"(.*?):\"' | sed -e 's/\"//g' | sed -e 's/\://g' | sed -e 's/\,//g' | sort | ipt | xargs npm run'
 alias packver='cat package.json | tr -d " \t\n\r" | egrep -o "version\"\:(.*?)," | cut -d":" -f 2 |  tr -d "\","'
+alias ips='ifconfig -a | perl -nle"/(\d+\.\d+\.\d+\.\d+)/ && print $1"'
+alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 # Requires specific structure
 alias code='cd $PROJECTS'
