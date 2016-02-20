@@ -14,11 +14,12 @@ alias meteo='curl -4 http://wttr.in/Moscow'
 alias packver='cat package.json | tr -d " \t\n\r" | egrep -o "version\"\:(.*?)," | cut -d":" -f 2 |  tr -d "\","'
 alias ips='ifconfig -a | perl -nle"/(\d+\.\d+\.\d+\.\d+)/ && print $1"'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias update="cd $DOTFILES && git pull && cd $BINFILES && git pull"
 
 # Requires specific structure
 alias code='cd $PROJECTS'
 alias down='cd ~/Downloads'
-alias dot='cd $PROJECTS/dotfiles'
+alias dot='cd $DOTFILES'
 
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'

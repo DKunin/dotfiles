@@ -6,4 +6,6 @@ export NODE_BIN_PATH="$HOME/.nvm/versions/node/v4.0.0/bin"
 export NODE_PATH="$NODE_BIN_PATH/node"
 export PATH="$NODE_PATH:$NODE_BIN_PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin"
 export PROJECTS="$HOME/Projects"
+export DOTFILES="$PROJECTS/dotfiles"
+export BINFILES="$PROJECTS/bin"
 export SPIRIT_ANIMAL=🐙
