@@ -34,3 +34,4 @@ alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | 
 alias ob='openbranch'
 alias ci='prepci'
 alias diffancy='git diff --color | diff-so-fancy'
+alias prepeare='geteslint && getjscsrc && geteditorconfig && getreadme'
