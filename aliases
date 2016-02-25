@@ -1,7 +1,9 @@
 alias mkdir='mkdir -p'
 alias chown='chown -Rv'
 alias chmod='chmod -Rv'
-alias grep='grep --color=always'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias tar='tar --verbose'
 alias tmux='tmux -2'
 alias psaux='ps aux'
@@ -11,15 +13,21 @@ alias more='less'
 alias topc='top -o vsize'
 alias topm='top -o cpu'
 alias meteo='curl -4 http://wttr.in/Moscow'
+alias localip="ipconfig getifaddr en0"
 alias packver='cat package.json | tr -d " \t\n\r" | egrep -o "version\"\:(.*?)," | cut -d":" -f 2 |  tr -d "\","'
 alias ips='ifconfig -a | perl -nle"/(\d+\.\d+\.\d+\.\d+)/ && print $1"'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias update="cd $DOTFILES && git pull && cd $BINFILES && git pull"
+alias update="brew update; brew upgrade --all; brew cleanup; sudo gem update --system; sudo gem update; cd $DOTFILES && git pull && cd $BINFILES && git pull"
 
 # Requires specific structure
 alias code='cd $PROJECTS'
-alias down='cd ~/Downloads'
+alias dl='cd ~/Downloads'
+alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
