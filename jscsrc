@@ -141,8 +141,6 @@
         "%"
     ],
 
-    "requireSpaceAfterComma": true,
-
     "requireSpaceAfterKeywords": [
         "if",
         "else",
