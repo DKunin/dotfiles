@@ -25,6 +25,7 @@ alias code='cd $PROJECTS'
 alias dl='cd ~/Downloads'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
+alias projectinit='npm init && geteslint && getjscsrc && geteditorconfig && getreadme && echo node_modules >> .gitignore'
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
