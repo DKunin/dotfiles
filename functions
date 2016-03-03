@@ -59,3 +59,7 @@ function change-extension() {
 function installcask() {
     brew cask install "${@}" 2> /dev/null
 }
+
+function movtomp4() {
+    ffmpeg -i $1 -vcodec h264 -acodec aac -strict -2 $2
+}
