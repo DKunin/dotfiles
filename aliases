@@ -1,3 +1,4 @@
+alias lsa='ls -la'
 alias mkdir='mkdir -p'
 alias chown='chown -Rv'
 alias chmod='chmod -Rv'
