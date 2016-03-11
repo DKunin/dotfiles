@@ -67,3 +67,7 @@ function movtomp4() {
 function addlocalvar() {
     echo '\rexport '$1 >> ~/.localenv
 }
+
+function diskavailable() {
+  df | grep $1 | awk '{print $5}'
+}
