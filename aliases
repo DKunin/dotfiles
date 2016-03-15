@@ -31,10 +31,15 @@ alias projectinit='npm init && geteslint && getjscsrc && geteditorconfig && getr
 # Git aliases
 alias glo="git log --oneline"
 alias gaa="git add -A ."
+alias gclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Hide/show all hidden file icons
+alias hidehidden="defaults write com.apple.finder AppleShowAllFiles FALSE && killall Finder"
+alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && killall Finder"
 
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
