@@ -9,3 +9,4 @@ export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export BINFILES="$PROJECTS/bin"
 export SPIRIT_ANIMAL=🐙
+export ANDROID_HOME="/usr/local/opt/android-sdk"
