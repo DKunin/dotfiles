@@ -50,6 +50,6 @@ alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | 
 alias ob='openbranch'
 alias sd='scriptdone'
 alias ci='prepci'
-alias mur='ci Merged with master rebuild | pbpaste'
+alias mur='ci Merged with master, rebuild'
 alias diffancy='git diff --color | diff-so-fancy'
 alias prepeare='geteslint && getjscsrc && geteditorconfig && getreadme'
