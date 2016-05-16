@@ -35,7 +35,7 @@ alias projectinit='npm init && geteslint && getjscsrc && geteditorconfig && getr
 alias glo="git log --oneline"
 alias gaa="git add -A ."
 alias gclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
-alias mm="git merge origin/master"
+alias mm="git fetch && git merge origin/master"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
