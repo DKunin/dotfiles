@@ -49,6 +49,7 @@ alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && kill
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ob='openbranch'
 alias sd='scriptdone'
+alias gb='gulp build && sd'
 alias ci='git add . && prepci'
 alias mur='ci Merged with master, rebuild'
 alias diffancy='git diff --color | diff-so-fancy'
