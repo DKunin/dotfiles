@@ -19,7 +19,7 @@ alias packver='cat package.json | tr -d " \t\n\r" | egrep -o "version\"\:(.*?),"
 alias ips='ifconfig -a | perl -nle"/(\d+\.\d+\.\d+\.\d+)/ && print $1"'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias getnmap="nmap -sP 192.168.0.1/24"
-alias update="brew update; brew upgrade --all; brew cleanup; sudo gem update --system; sudo gem update; cd $DOTFILES && git pull && cd $BINFILES && git pull"
+alias update="brew update; brew upgrade --all; brew cleanup; sudo gem update --system; sudo gem update; cd $DOTFILES && git pull && cd $BINFILES"
 
 # shows the top 5 processes by cpu usage
 alias top5="ps auxww | sort -rnk 3,3 | head -n 5 | awk '{ print \$3\" (\" \$2 \") \" \$11 }'"
@@ -55,7 +55,6 @@ alias gw='gulp watch'
 alias ci='git add . && prepci'
 alias mur='ci Merged with master, rebuild'
 alias diffancy='git diff --color | diff-so-fancy'
-alias prepeare='geteslint && getjscsrc && geteditorconfig && getreadme'
 alias webdev='t list timeline dkunin/webdev -l -r -n 35'
 alias mtg='$PROJECTS/mtglist/mtg'
 alias magnetlist='gist -r 341a90e38ae9cd333cf8650975985f79'
