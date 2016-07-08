@@ -1,0 +1,88 @@
+'use strict';
+
+var keys = [];
+var commands = [ 'cmd', 'shift' ];
+var altCommands = [];
+
+Phoenix.notify('Phoenix config reloaded');
+
+var keysArray = [];
+var clearKeysTimeout;
+
+function clearKeyArray() {
+  keysArray = [];
+}
+
+function leftHalf(key) {
+  keysArray.push(key);
+  clearTimeout(clearKeysTimeout);
+  var keysPressed = (keysArray.filter(function(singleKey){ 
+    return singleKey === key;
+  }).length % 4);
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    if (keysPressed <= 2) {
+      win.setTopLeft({ x: 0, y: 0 });
+      size.width = frame.width / 2;
+      size.height = frame.height / keysPressed;
+    } else if (keysPressed > 2) {
+      win.setTopLeft({ x: 0, y: frame.height / 2 });
+      size.width = frame.width / 2;
+      size.height = frame.height / keysPressed - 1;
+    }
+    win.setSize(size);
+  }
+  clearKeysTimeout = setTimeout(clearKeyArray, 2000);
+};
+
+keys.push(Phoenix.bind('1', commands, leftHalf.bind(null, 1)));
+
+keys.push(Phoenix.bind('2', commands, function () {
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    win.setTopLeft({ x: frame.width / 2, y: 0 });
+    size.width = frame.width / 2;
+    size.height = frame.height / 2;
+    win.setSize(size);
+  }
+}));
+
+keys.push(Phoenix.bind('3', commands, function () {
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    win.setTopLeft({ x: 0, y: frame.height / 2 });
+    size.width = frame.width / 2;
+    size.height = frame.height / 2;
+    win.setSize(size);
+  }
+}));
+
+keys.push(Phoenix.bind('4', commands, function () {
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    win.setTopLeft({ x: frame.width / 2, y: frame.height / 2 });
+    size.width = frame.width / 2;
+    size.height = frame.height / 2;
+    win.setSize(size);
+  }
+}));
+
+keys.push(Phoenix.bind('0', commands, function() {
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    win.setTopLeft({ x: 0, y: 0 });
+    size.width = frame.width;
+    size.height = frame.height;
+    win.setSize(size);
+  }
+}));
