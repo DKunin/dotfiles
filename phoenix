@@ -1,0 +1,115 @@
+'use strict';
+
+var keys = [];
+var commands = [ 'alt', 'shift' ];
+var altCommands = [];
+
+Phoenix.notify('Phoenix config reloaded');
+
+var keysArray = [];
+var clearKeysTimeout;
+
+function clearKeyArray() {
+  keysArray = [];
+}
+
+function half(key, x) {
+  keysArray.push(key);
+  var X = {};
+  clearTimeout(clearKeysTimeout);
+  var keysPressed = (keysArray.filter(function(singleKey){ 
+    return singleKey === key;
+  }).length % 4);
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    if (!x) {
+      X = 0;
+    } else {
+      X = frame.width / 2;
+    }
+    if (keysPressed <= 2) {
+      win.setTopLeft({ x: X, y: 0 });
+      size.width = frame.width / 2;
+      size.height = frame.height / keysPressed;
+    } else if (keysPressed > 2) {
+      win.setTopLeft({ x: X, y: frame.height / 2 });
+      size.width = frame.width / 2;
+      size.height = frame.height / 2;
+    }
+    win.setSize(size);
+  }
+  clearKeysTimeout = setTimeout(clearKeyArray, 2000);
+};
+
+function third(key) {
+  keysArray.push(key);
+  clearTimeout(clearKeysTimeout);
+  var keysPressed = (keysArray.filter(function(singleKey){ 
+    return singleKey === key;
+  }).length % 3);
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    win.setTopLeft({ x: 0 + ((frame.width/3) * keysPressed), y: 0 });
+    size.width = frame.width / 3;
+    size.height = frame.height;
+    win.setSize(size);
+  }
+  clearKeysTimeout = setTimeout(clearKeyArray, 2000);
+};
+
+function switchApp(appName) {
+  var window = Window.focusedWindow();
+  if (window) {
+    save_mouse_position_for_window(window);
+  }
+  api.launch(appName);
+  var newWindow = Window.focusedWindow();
+  if (newWindow && window !== newWindow) {
+    restore_mouse_position_for_window(newWindow);
+  }
+}
+
+
+keys.push(Phoenix.bind('[', commands, half.bind(null, 1, false)));
+keys.push(Phoenix.bind(']', commands, half.bind(null, 2, true)));
+keys.push(Phoenix.bind('\\', commands, third.bind(null, 3)));
+
+keys.push(Phoenix.bind('f', commands, function(){
+  switchApp('Franz');
+}));
+
+keys.push(Phoenix.bind('i', commands, function(){
+  switchApp('iTerm');
+}));
+
+keys.push(Phoenix.bind('s', commands, function(){
+  switchApp('Sublime Text');
+}));
+
+keys.push(Phoenix.bind('c', commands, function(){
+  switchApp('Google Chrome');
+}));
+
+keys.push(Phoenix.bind('t', commands, function(){
+  switchApp('Todoist');
+}));
+
+keys.push(Phoenix.bind('n', commands, function(){
+  switchApp('Nylas N1');
+}));
+
+keys.push(Phoenix.bind('0', commands, function() {
+  if (Window.focusedWindow()) {
+    var win = Window.focusedWindow();
+    var size = win.size();
+    var frame = win.screen().visibleFrameInRectangle();
+    win.setTopLeft({ x: 0, y: 0 });
+    size.width = frame.width;
+    size.height = frame.height;
+    win.setSize(size);
+  }
+}));
