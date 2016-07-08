@@ -1,7 +1,7 @@
 'use strict';
 
 var keys = [];
-var commands = [ 'cmd', 'shift' ];
+var commands = [ 'alt', 'shift' ];
 var altCommands = [];
 
 Phoenix.notify('Phoenix config reloaded');
@@ -61,9 +61,46 @@ function third(key) {
   clearKeysTimeout = setTimeout(clearKeyArray, 2000);
 };
 
+function switchApp(appName) {
+  var window = Window.focusedWindow();
+  if (window) {
+    save_mouse_position_for_window(window);
+  }
+  api.launch(appName);
+  var newWindow = Window.focusedWindow();
+  if (newWindow && window !== newWindow) {
+    restore_mouse_position_for_window(newWindow);
+  }
+}
+
+
 keys.push(Phoenix.bind('[', commands, half.bind(null, 1, false)));
 keys.push(Phoenix.bind(']', commands, half.bind(null, 2, true)));
 keys.push(Phoenix.bind('\\', commands, third.bind(null, 3)));
+
+keys.push(Phoenix.bind('f', commands, function(){
+  switchApp('Franz');
+}));
+
+keys.push(Phoenix.bind('i', commands, function(){
+  switchApp('iTerm');
+}));
+
+keys.push(Phoenix.bind('s', commands, function(){
+  switchApp('Sublime Text');
+}));
+
+keys.push(Phoenix.bind('c', commands, function(){
+  switchApp('Google Chrome');
+}));
+
+keys.push(Phoenix.bind('t', commands, function(){
+  switchApp('Todoist');
+}));
+
+keys.push(Phoenix.bind('n', commands, function(){
+  switchApp('Nylas N1');
+}));
 
 keys.push(Phoenix.bind('0', commands, function() {
   if (Window.focusedWindow()) {
