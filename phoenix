@@ -13,8 +13,9 @@ function clearKeyArray() {
   keysArray = [];
 }
 
-function leftHalf(key) {
+function half(key, x) {
   keysArray.push(key);
+  var X = {};
   clearTimeout(clearKeysTimeout);
   var keysPressed = (keysArray.filter(function(singleKey){ 
     return singleKey === key;
@@ -23,57 +24,46 @@ function leftHalf(key) {
     var win = Window.focusedWindow();
     var size = win.size();
     var frame = win.screen().visibleFrameInRectangle();
+    if (!x) {
+      X = 0;
+    } else {
+      X = frame.width / 2;
+    }
     if (keysPressed <= 2) {
-      win.setTopLeft({ x: 0, y: 0 });
+      win.setTopLeft({ x: X, y: 0 });
       size.width = frame.width / 2;
       size.height = frame.height / keysPressed;
     } else if (keysPressed > 2) {
-      win.setTopLeft({ x: 0, y: frame.height / 2 });
+      win.setTopLeft({ x: X, y: frame.height / 2 });
       size.width = frame.width / 2;
-      size.height = frame.height / keysPressed - 1;
+      size.height = frame.height / 2;
     }
     win.setSize(size);
   }
   clearKeysTimeout = setTimeout(clearKeyArray, 2000);
 };
 
-keys.push(Phoenix.bind('1', commands, leftHalf.bind(null, 1)));
-
-keys.push(Phoenix.bind('2', commands, function () {
+function third(key) {
+  keysArray.push(key);
+  clearTimeout(clearKeysTimeout);
+  var keysPressed = (keysArray.filter(function(singleKey){ 
+    return singleKey === key;
+  }).length % 3);
   if (Window.focusedWindow()) {
     var win = Window.focusedWindow();
     var size = win.size();
     var frame = win.screen().visibleFrameInRectangle();
-    win.setTopLeft({ x: frame.width / 2, y: 0 });
-    size.width = frame.width / 2;
-    size.height = frame.height / 2;
+    win.setTopLeft({ x: 0 + ((frame.width/3) * keysPressed), y: 0 });
+    size.width = frame.width / 3;
+    size.height = frame.height;
     win.setSize(size);
   }
-}));
+  clearKeysTimeout = setTimeout(clearKeyArray, 2000);
+};
 
-keys.push(Phoenix.bind('3', commands, function () {
-  if (Window.focusedWindow()) {
-    var win = Window.focusedWindow();
-    var size = win.size();
-    var frame = win.screen().visibleFrameInRectangle();
-    win.setTopLeft({ x: 0, y: frame.height / 2 });
-    size.width = frame.width / 2;
-    size.height = frame.height / 2;
-    win.setSize(size);
-  }
-}));
-
-keys.push(Phoenix.bind('4', commands, function () {
-  if (Window.focusedWindow()) {
-    var win = Window.focusedWindow();
-    var size = win.size();
-    var frame = win.screen().visibleFrameInRectangle();
-    win.setTopLeft({ x: frame.width / 2, y: frame.height / 2 });
-    size.width = frame.width / 2;
-    size.height = frame.height / 2;
-    win.setSize(size);
-  }
-}));
+keys.push(Phoenix.bind('[', commands, half.bind(null, 1, false)));
+keys.push(Phoenix.bind(']', commands, half.bind(null, 2, true)));
+keys.push(Phoenix.bind('\\', commands, third.bind(null, 3)));
 
 keys.push(Phoenix.bind('0', commands, function() {
   if (Window.focusedWindow()) {
