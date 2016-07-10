@@ -46,12 +46,6 @@ sman() {
   man "${1}" | col -b | st
 }
 
-function change-extension() {
-  foreach f (**/*.$1)
-    mv $f $f:r.$2
-  end
-}
-
 function installcask() {
     brew cask install "${@}" 2> /dev/null
 }

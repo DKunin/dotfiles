@@ -62,15 +62,7 @@ function third(key) {
 };
 
 function switchApp(appName) {
-  var window = Window.focusedWindow();
-  if (window) {
-    save_mouse_position_for_window(window);
-  }
-  api.launch(appName);
-  var newWindow = Window.focusedWindow();
-  if (newWindow && window !== newWindow) {
-    restore_mouse_position_for_window(newWindow);
-  }
+  App.launch(appName).focus();
 }
 
 
