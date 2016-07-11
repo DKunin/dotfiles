@@ -1,7 +1,7 @@
 'use strict';
 
 var keys = [];
-var commands = [ 'alt', 'shift' ];
+var commands = [ 'alt' ];
 var altCommands = [];
 
 Phoenix.notify('Phoenix config reloaded');
