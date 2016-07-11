@@ -89,6 +89,13 @@ function statsfor {
   { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
 }
   
+function updateSublimeSettings {
+  ls $PROJECTS/dotfiles/sublime | while read line; do
+    rm $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/$line
+    ln -s $PROJECTS/dotfiles/sublime/$line $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/$line
+  done
+}
+  
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
