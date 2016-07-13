@@ -31,6 +31,7 @@ alias gaa="git add -A ."
 alias gclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
 alias mm="git fetch && git merge origin/master"
 alias gn="git symbolic-ref -q HEAD | cut -d'/' -f 3 | pbcopy"
+alias gp="git pull"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
