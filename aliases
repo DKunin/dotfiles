@@ -21,6 +21,7 @@ alias top5="ps auxww | sort -rnk 3,3 | head -n 5 | awk '{ print \$3\" (\" \$2 \"
 # Requires specific structure
 alias code='cd $PROJECTS'
 alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias projectinit='npm init && geteslint && getjscsrc && geteditorconfig && getreadme && echo node_modules >> .gitignore'
@@ -45,7 +46,7 @@ alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && kill
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ob='openbranch'
 alias sd='scriptdone'
-alias gb='gulp build && sd'
+alias gb='npm test && gulp build && sd'
 alias gw='gulp watch'
 alias ci='git add . && prepci'
 alias mur='ci Merged with master, rebuild'
