@@ -20,8 +20,8 @@ function half(key, x) {
   var keysPressed = (keysArray.filter(function(singleKey){ 
     return singleKey === key;
   }).length % 4);
-  if (Window.focusedWindow()) {
-    var win = Window.focusedWindow();
+  if (Window.focused()) {
+    var win = Window.focused();
     var size = win.size();
     var frame = win.screen().visibleFrameInRectangle();
     if (!x) {
@@ -49,8 +49,8 @@ function third(key) {
   var keysPressed = (keysArray.filter(function(singleKey){ 
     return singleKey === key;
   }).length % 3);
-  if (Window.focusedWindow()) {
-    var win = Window.focusedWindow();
+  if (Window.focused()) {
+    var win = Window.focused();
     var size = win.size();
     var frame = win.screen().visibleFrameInRectangle();
     win.setTopLeft({ x: 0 + ((frame.width/3) * keysPressed), y: 0 });
@@ -66,35 +66,35 @@ function switchApp(appName) {
 }
 
 
-keys.push(Phoenix.bind('[', commands, half.bind(null, 1, false)));
-keys.push(Phoenix.bind(']', commands, half.bind(null, 2, true)));
-keys.push(Phoenix.bind('\\', commands, third.bind(null, 3)));
+var handler = new Key('[', commands, half.bind(null, 1, false));
+var handler2 = new Key(']', commands, half.bind(null, 2, false));
+var handler3 = new Key('\\', commands, third.bind(null, 3));
 
-keys.push(Phoenix.bind('f', commands, function(){
+var handler4 = new Key('f', commands, function(){
   switchApp('Franz');
-}));
+});
 
-keys.push(Phoenix.bind('i', commands, function(){
+var handler5 = new Key('i', commands, function(){
   switchApp('iTerm');
-}));
+});
 
-keys.push(Phoenix.bind('s', commands, function(){
+var handler6 = new Key('s', commands, function(){
   switchApp('Sublime Text');
-}));
+});
 
-keys.push(Phoenix.bind('c', commands, function(){
+var handler7 = new Key('c', commands, function(){
   switchApp('Google Chrome');
-}));
+});
 
-keys.push(Phoenix.bind('t', commands, function(){
+var handler8 = new Key('t', commands, function(){
   switchApp('Todoist');
-}));
+});
 
-keys.push(Phoenix.bind('n', commands, function(){
+var handler9 = new Key('n', commands, function(){
   switchApp('Nylas N1');
-}));
+});
 
-keys.push(Phoenix.bind('0', commands, function() {
+var handler10 = new Key('0', commands, function() {
   if (Window.focusedWindow()) {
     var win = Window.focusedWindow();
     var size = win.size();
@@ -104,4 +104,4 @@ keys.push(Phoenix.bind('0', commands, function() {
     size.height = frame.height;
     win.setSize(size);
   }
-}));
+});
