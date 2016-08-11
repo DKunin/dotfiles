@@ -95,8 +95,8 @@ var handler9 = new Key('n', commands, function(){
 });
 
 var handler10 = new Key('0', commands, function() {
-  if (Window.focusedWindow()) {
-    var win = Window.focusedWindow();
+  if (Window.focused()) {
+    var win = Window.focused();
     var size = win.size();
     var frame = win.screen().visibleFrameInRectangle();
     win.setTopLeft({ x: 0, y: 0 });
