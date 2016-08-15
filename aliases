@@ -54,7 +54,7 @@ alias diffancy='git diff --color | diff-so-fancy'
 alias webdev='t list timeline dkunin/webdev -l -r -n 35'
 alias mtg='$PROJECTS/mtglist/mtg'
 alias magnetlist='gist -r 341a90e38ae9cd333cf8650975985f79'
-alias ydl='youtube-dl -f "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"'
+alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
 
 # NVM aliases
 alias cub='nvm use 4.2.3'
