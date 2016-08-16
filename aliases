@@ -13,6 +13,7 @@ alias localip="ipconfig getifaddr en0"
 alias ips='ifconfig -a | perl -nle"/(\d+\.\d+\.\d+\.\d+)/ && print $1"'
 alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias getnmap="nmap -sP 192.168.0.1/24"
+alias week="date +%V"
 alias update="brew update; brew upgrade --all; brew cleanup; sudo gem update --system; sudo gem update; cd $DOTFILES && git pull && cd $BINFILES"
 
 # shows the top 5 processes by cpu usage
