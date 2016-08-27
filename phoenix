@@ -74,6 +74,7 @@ var handler4 = new Key('f', commands, function(){
   switchApp('Franz');
 });
 
+
 var handler5 = new Key('i', commands, function(){
   switchApp('iTerm');
 });
@@ -90,8 +91,20 @@ var handler8 = new Key('t', commands, function(){
   switchApp('Todoist');
 });
 
-var handler9 = new Key('n', commands, function(){
-  switchApp('Nylas N1');
+var handler9 = new Key('p', commands, function(){
+  // Task.run('/Users/dikunin/Projects/bin/lorem');
+  //Task.run('/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine');
+  // Task.run('/bin/sh', ["-c", "LANG='ja_JP.UTF-8' date '+%a %-m/%-d %-H:%M'"], function(result) {
+  //   Phoenix.notify(result.output);
+  // });
+  Task.run('/bin/zsh', ['/Users/dikunin/Projects/bin/skeleton'], function(result) {
+    if (result.error) {
+      Phoenix.notify(result.error);
+    }
+    Phoenix.notify(result.output);
+  });
+
+  //Phoenix.notify('Yes');
 });
 
 var handler10 = new Key('0', commands, function() {
