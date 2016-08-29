@@ -8,9 +8,38 @@ Phoenix.notify('Phoenix config reloaded');
 
 var keysArray = [];
 var clearKeysTimeout;
+var pinTimeout;
+var enteringPin = false;
+var PIN = [];
+var PIN_TIMEOUT_MS = 2000;
+var keyHandlers = {};
 
 function clearKeyArray() {
   keysArray = [];
+}
+
+function enablePINmode() {
+  clearTimeout(pinTimeout);
+  enteringPin = true;
+
+  pinTimeout = setTimeout(function(){
+    enteringPin = false;
+    processPIN(PIN.join(''));
+  }, PIN_TIMEOUT_MS);
+}
+
+function enterPINnumber(number) {
+  PIN.push(number);
+}
+
+function processPIN(pin) {
+  Task.run('/bin/zsh', ['/Users/dikunin/Projects/bin/skeleton', pin], function(result) {
+    if (result.error) {
+      Phoenix.notify(result.error);
+    }
+    Phoenix.notify(result.output);
+    PIN = [];
+  });  
 }
 
 function half(key, x) {
@@ -40,7 +69,7 @@ function half(key, x) {
     }
     win.setSize(size);
   }
-  clearKeysTimeout = setTimeout(clearKeyArray, 2000);
+  clearKeysTimeout = setTimeout(clearKeyArray, PIN_TIMEOUT_MS);
 };
 
 function third(key) {
@@ -70,41 +99,22 @@ var handler = new Key('[', commands, half.bind(null, 1, false));
 var handler2 = new Key(']', commands, half.bind(null, 2, true));
 var handler3 = new Key('\\', commands, third.bind(null, 3));
 
-var handler4 = new Key('f', commands, function(){
-  switchApp('Franz');
-});
-
-
-var handler5 = new Key('i', commands, function(){
-  switchApp('iTerm');
-});
-
-var handler6 = new Key('s', commands, function(){
-  switchApp('Sublime Text');
-});
-
-var handler7 = new Key('c', commands, function(){
-  switchApp('Google Chrome');
-});
-
-var handler8 = new Key('t', commands, function(){
-  switchApp('Todoist');
-});
-
-var handler9 = new Key('p', commands, function(){
-  // Task.run('/Users/dikunin/Projects/bin/lorem');
-  //Task.run('/System/Library/Frameworks/ScreenSaver.framework/Versions/A/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine');
-  // Task.run('/bin/sh', ["-c", "LANG='ja_JP.UTF-8' date '+%a %-m/%-d %-H:%M'"], function(result) {
-  //   Phoenix.notify(result.output);
-  // });
-  Task.run('/bin/zsh', ['/Users/dikunin/Projects/bin/skeleton'], function(result) {
-    if (result.error) {
-      Phoenix.notify(result.error);
-    }
-    Phoenix.notify(result.output);
+[
+  { key: 'f', app: 'Franz'},
+  { key: 'i', app: 'iTerm'},
+  { key: 's', app: 'Sublime Text'},
+  { key: 'c', app: 'Google Chrome'},
+  { key: 't', app: 'Todoist'}
+].forEach(function(singleKeyCode){
+  keyHandlers[singleKeyCode.app] = new Key(singleKeyCode.key, commands, function(){
+    switchApp(singleKeyCode.app);
   });
 
-  //Phoenix.notify('Yes');
+})
+
+var handler9 = new Key('p', commands, function(){
+  enablePINmode();
+  Phoenix.notify('Enter PIN');
 });
 
 var handler10 = new Key('0', commands, function() {
@@ -117,4 +127,13 @@ var handler10 = new Key('0', commands, function() {
     size.height = frame.height;
     win.setSize(size);
   }
+});
+
+[1,2,3,4,5,6,7,8,9].forEach(function(number) {
+  keyHandlers['key-' + number] = new Key(String(number), commands, function(){
+    if (enteringPin) {
+      enablePINmode();
+      enterPINnumber(number);
+    }
+  });
 });
