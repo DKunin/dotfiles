@@ -104,6 +104,7 @@ var handler3 = new Key('\\', commands, third.bind(null, 3));
   { key: 'i', app: 'iTerm'},
   { key: 's', app: 'Sublime Text'},
   { key: 'c', app: 'Google Chrome'},
+  { key: 'j', app: 'Jira'},
   { key: 't', app: 'Todoist'}
 ].forEach(function(singleKeyCode){
   keyHandlers[singleKeyCode.app] = new Key(singleKeyCode.key, commands, function(){
