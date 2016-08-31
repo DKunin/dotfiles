@@ -25,7 +25,6 @@ alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
-alias projectinit='npm init && geteslint && getjscsrc && geteditorconfig && getreadme && echo node_modules >> .gitignore'
 
 # Git aliases
 alias glo="git log --oneline"
