@@ -130,6 +130,16 @@ var handler10 = new Key('0', commands, function() {
   }
 });
 
+var handler11 = new Key('z', commands, function(){
+  //Task.run('/bin/sh', ["-c", "LANG='ja_JP.UTF-8' date '+%a %-m/%-d %-H:%M'"], function(result) {
+  Task.run('/Users/dkunin/Projects/bin/skeleton', ["-c", "alias"], function(result) {
+    if (result.error) {
+      Phoenix.notify(result.error);
+    }
+    Phoenix.notify(result.output);
+  }); 
+});
+
 [1,2,3,4,5,6,7,8,9].forEach(function(number) {
   keyHandlers['key-' + number] = new Key(String(number), commands, function(){
     if (enteringPin) {
