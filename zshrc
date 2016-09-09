@@ -6,3 +6,4 @@ source $HOME/.localenv
 source $HOME/.aliases
 source $HOME/.functions
 source $HOME/.prompt
+source $PROJECTS/git-waka/mygit.sh

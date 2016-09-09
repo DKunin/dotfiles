@@ -62,3 +62,6 @@ alias cub='nvm use 4.2.3'
 alias mamabear='nvm use 5.9.0'
 alias papabear='nvm use 6.2.1'
 alias notes='cd $PROJECTS/work-nindo'
+
+# OSX Specific
+alias listdownloadedapps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'"
