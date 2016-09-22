@@ -38,14 +38,6 @@ function nprun() {
   cat package.json | tr -d " \t\n\r" | egrep -o 'scripts\"\:\{(.*?)\}' | sed -e "s/scripts\"\://g" | sed -e "s/{//g" | egrep -o '\"(.*?):\"' | sed -e 's/\"//g' | sed -e 's/\://g' | sed -e 's/\,//g' | sort | ipt | xargs npm run
 }
 
-pman () {
-  man -t "${1}" | open -f -a /Applications/Preview.app
-}
-
-sman() {
-  man "${1}" | col -b | st
-}
-
 function installcask() {
     brew cask install "${@}" 2> /dev/null
 }
@@ -116,4 +108,8 @@ function getciannumber() {
 
 transfer() { 
   if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --uploae-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+
+gco() {
+	git co $1 && comparemaster
+}
