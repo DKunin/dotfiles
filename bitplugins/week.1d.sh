@@ -6,9 +6,10 @@
 # by Dkunin
 #
 # Displays weeknumber
+DISPLAY_DATE=$(date +%d\ %b\ \(W%V\))
 DATE=W$(date +%V)
 PDATE=W$(date +%V | awk '{print $1 - 1}')
-echo $DATE
+echo $DISPLAY_DATE
 echo "---"
 echo "Open Advert | href=https://cf.avito.ru/display/GE/$DATE%3A+Advert"
 echo "Open Billing | href=https://cf.avito.ru/display/GE/$DATE%3A+Billing"
