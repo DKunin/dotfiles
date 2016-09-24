@@ -50,8 +50,6 @@ alias showhidden="defaults write com.apple.finder AppleShowAllFiles TRUE && kill
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ob='openbranch'
 alias sd='scriptdone'
-alias gb='npm test && gulp build && sd'
-alias gw='gulp watch'
 alias ci='git add . && prepci'
 alias mur='ci Merged with master, rebuild'
 alias diffancy='git diff --color | diff-so-fancy'
@@ -63,6 +61,10 @@ alias tweet='t update'
 alias cme='comparemaster | grep .es6 |  xargs ./node_modules/.bin/eslint'
 alias notes='cd $PROJECTS/work-nindo'
 alias totest='gnc && openticket'
+
+# Gulp
+alias gb='npm test && gulp build && sd'
+alias gw='gulp watch'
 
 # NVM aliases
 alias cub='nvm use 4.2.3'
