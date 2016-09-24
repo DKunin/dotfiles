@@ -11,6 +11,8 @@ DATE=W$(date +%V)
 PDATE=W$(date +%V | awk '{print $1 - 1}')
 echo $DISPLAY_DATE
 echo "---"
+/Users/dikunin/Projects/work-calendar/avito-calendar-dkunin
+echo "$DATE :"
 echo "Open Advert | href=https://cf.avito.ru/display/GE/$DATE%3A+Advert"
 echo "Open Billing | href=https://cf.avito.ru/display/GE/$DATE%3A+Billing"
 echo "Open CRM | href=https://cf.avito.ru/display/GE/$DATE%3A+CRM"
