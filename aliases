@@ -61,11 +61,13 @@ alias magnetlist='gist -r 341a90e38ae9cd333cf8650975985f79'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
 alias tweet='t update'
 alias cme='comparemaster | grep .es6 |  xargs ./node_modules/.bin/eslint'
+alias notes='cd $PROJECTS/work-nindo'
+alias totest='gnc && openticket'
+
 # NVM aliases
 alias cub='nvm use 4.2.3'
 alias mamabear='nvm use 5.9.0'
 alias papabear='nvm use 6.2.1'
-alias notes='cd $PROJECTS/work-nindo'
 
 # OSX Specific
 alias listdownloadedapps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'"
