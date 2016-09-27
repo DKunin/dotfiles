@@ -6,3 +6,4 @@ source $HOME/.localenv
 source $HOME/.aliases
 source $HOME/.functions
 source $HOME/.prompt
+export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"

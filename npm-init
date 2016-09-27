@@ -32,7 +32,7 @@ module.exports = {
     val = val.indexOf('y') !== -1 ? true : false;
 
     if(val){
-      cp.execSync("geteslint && getjscsrc && geteditorconfig && getreadme && echo node_modules >> .gitignore");
+      cp.execSync("geteslint && getjscsrc && geteditorconfig && getreadme && echo node_modules >> .gitignore && :> .npmrc");
     }
 
     return undefined;
