@@ -60,7 +60,6 @@ alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best
 alias tweet='t update'
 alias cme='comparemaster | grep .es6 |  xargs ./node_modules/.bin/eslint'
 alias notes='cd $PROJECTS/work-nindo'
-alias totest='gnc && openticket'
 
 # Gulp
 alias gb='npm test && gulp build && sd'
