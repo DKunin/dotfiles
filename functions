@@ -113,3 +113,11 @@ tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | s
 gco() {
 	git co $1 && comparemaster
 }
+
+cme() {
+  comparemaster > /tmp/tempdiffwithmaster;
+  cat /tmp/tempdiffwithmaster | grep .es6 | xargs ./node_modules/.bin/eslint;
+  cat /tmp/tempdiffwithmaster | grep .js | xargs ./node_modules/.bin/eslint;
+  cat /tmp/tempdiffwithmaster | grep .styl | xargs ./node_modules/.bin/jscs;
+  cat /tmp/tempdiffwithmaster | grep .css | xargs ./node_modules/.bin/jscs;
+}
