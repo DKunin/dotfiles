@@ -20,6 +20,7 @@ module.exports = {
     val = val.indexOf('y') !== -1 ? true : false;
 
     if(val){
+      cp.execSync("git init");
       console.log('enter github password:');
       cp.execSync("curl -u '"+USER+"' https://api.github.com/user/repos -d " +
         "'{\"name\": \""+basename+"\", \"private\": "+ ((priv) ? 'true' : 'false')  +"}' ");
@@ -32,7 +33,7 @@ module.exports = {
     val = val.indexOf('y') !== -1 ? true : false;
 
     if(val){
-      cp.execSync("geteslint && getjscsrc && geteditorconfig && getreadme && echo node_modules >> .gitignore && :> .npmrc");
+      cp.execSync("geteslint && geteditorconfig && getreadme && echo node_modules >> .gitignore && :> .npmrc");
     }
 
     return undefined;
