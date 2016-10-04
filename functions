@@ -5,7 +5,6 @@ function mk() {
 
 # Extra many types of compressed packages
 # Credit: http://nparikh.org/notes/zshrc.txt
-
 extract() {
   if [ -f "$1" ]; then
     case "$1" in
@@ -29,11 +28,6 @@ extract() {
   fi
 }
 
-function iseek() {
-    cd $(ls -a -d */ .. | ipt)
-    iseek
-}
-
 function nprun() {
   cat package.json | tr -d " \t\n\r" | egrep -o 'scripts\"\:\{(.*?)\}' | sed -e "s/scripts\"\://g" | sed -e "s/{//g" | egrep -o '\"(.*?):\"' | sed -e 's/\"//g' | sed -e 's/\://g' | sed -e 's/\,//g' | sort | ipt | xargs npm run
 }
@@ -48,10 +42,6 @@ function movtomp4() {
 
 function addlocalvar() {
     echo '\rexport '$1 >> ~/.localenv
-}
-
-function diskavailable() {
-  df | grep $1 | awk '{print $5}'
 }
 
 function fs() {
@@ -87,7 +77,6 @@ function updateSublimeSettings {
     ln -s $PROJECTS/dotfiles/sublime/$line $HOME/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/$line
   done
 }
-  
 
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
@@ -102,10 +91,6 @@ function getwebpagetitle() {
   wget -qO- $1 | perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si'
 }
 
-function getciannumber() {
-  wget -qO- $1 | perl -l -0777 -ne 'print $1 if /(tel:\d+)/'
-}
-
 transfer() { 
   if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --uploae-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
@@ -115,21 +100,27 @@ gco() {
 }
 
 cme() {
-  comparemaster > /tmp/tempdiffwithmaster;
-  cat /tmp/tempdiffwithmaster | grep .es6 | xargs ./node_modules/.bin/eslint;
-  cat /tmp/tempdiffwithmaster | grep .js | xargs ./node_modules/.bin/eslint;
-  cat /tmp/tempdiffwithmaster | grep .es6 | xargs ./node_modules/.bin/jscs;
-  cat /tmp/tempdiffwithmaster | grep .js | xargs ./node_modules/.bin/jscs;
-  cat /tmp/tempdiffwithmaster | grep .styl | xargs ./node_modules/.bin/stylint;
-  cat /tmp/tempdiffwithmaster | grep .css | xargs ./node_modules/.bin/stylint;
+  filename = '/tmp/tempdiffwithmaster';
+  comparemaster > $filename;
+  cat $filename | grep .es6 | xargs ./node_modules/.bin/eslint;
+  cat $filename | grep .js | xargs ./node_modules/.bin/eslint;
+  cat $filename | grep .es6 | xargs ./node_modules/.bin/jscs;
+  cat $filename | grep .js | xargs ./node_modules/.bin/jscs;
+  cat $filename | grep .styl | xargs ./node_modules/.bin/stylint;
+  cat $filename | grep .css | xargs ./node_modules/.bin/stylint;
 }
 
 git_prompt_info_v2 () {
-  #:$(getticket;getprop)
   local ref
   if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]
   then
-    ref=$(command git symbolic-ref HEAD 2> /dev/null)  || ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    if [[ $(pwd) == *"avito"* ]]
+    then
+      issueStatus='/$(getticket;getprop)'
+    else 
+      issueStatus='/in progress'
+    fi
+    ref=$(command git symbolic-ref HEAD 2> /dev/null) || ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return 0
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$issueStatus$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
