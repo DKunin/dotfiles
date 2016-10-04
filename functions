@@ -118,6 +118,8 @@ cme() {
   comparemaster > /tmp/tempdiffwithmaster;
   cat /tmp/tempdiffwithmaster | grep .es6 | xargs ./node_modules/.bin/eslint;
   cat /tmp/tempdiffwithmaster | grep .js | xargs ./node_modules/.bin/eslint;
-  cat /tmp/tempdiffwithmaster | grep .styl | xargs ./node_modules/.bin/jscs;
-  cat /tmp/tempdiffwithmaster | grep .css | xargs ./node_modules/.bin/jscs;
+  cat /tmp/tempdiffwithmaster | grep .es6 | xargs ./node_modules/.bin/jscs;
+  cat /tmp/tempdiffwithmaster | grep .js | xargs ./node_modules/.bin/jscs;
+  cat /tmp/tempdiffwithmaster | grep .styl | xargs ./node_modules/.bin/stylint;
+  cat /tmp/tempdiffwithmaster | grep .css | xargs ./node_modules/.bin/stylint;
 }
