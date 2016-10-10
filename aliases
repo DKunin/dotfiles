@@ -59,10 +59,11 @@ alias magnetlist='gist -r 341a90e38ae9cd333cf8650975985f79'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
 alias tweet='t update'
 alias notes='cd $PROJECTS/work-nindo'
+alias syncvideo='rsync -vhi --progress $PROJECTS/watchlater-downloads/public/videos/* root@10.10.9.120:/sdcard/Download/videos'
 
 # Gulp
 alias gb='npm test && gulp build && sd'
-alias gw='gulp watch'
+alias gw='gulp apps:watch'
 
 # NVM aliases
 alias cub='nvm use 4.2.3'
