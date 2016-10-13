@@ -59,8 +59,9 @@ alias magnetlist='gist -r 341a90e38ae9cd333cf8650975985f79'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
 alias tweet='t update'
 alias notes='cd $PROJECTS/work-nindo'
-alias syncvideo='rsync -aivhi --progress $PROJECTS/watchlater-downloads/public/videos/* root@$TABLET_SSH:/sdcard/Download/videos'
-alias syncmp3='rsync -aivhir --progress $PROJECTS/watchlater-downloads/public/mp3 root@10.10.9.120:/sdcard/Music'
+alias syncvideo='rsync -aivhi --progress '$VIDEOS_FOLDER/* root@$TABLET_SSH:/sdcard/Download/videos'
+alias syncmp3='rsync -aivhir --progress $PROJECTS/watchlater-downloads/public/mp3 root@$TABLET_SSH:/sdcard/Music'
+alias cleanvideos='rm -rf $PROJECTS/watchlater-downloads/public/videos/*'
 
 # Gulp
 alias gb='npm test && gulp build && sd'

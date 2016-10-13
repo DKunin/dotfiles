@@ -15,3 +15,4 @@ export DOTFILES="$PROJECTS/dotfiles"
 export BINFILES="$PROJECTS/bin"
 export SPIRIT_ANIMAL=🐙
 export ANDROID_HOME="/usr/local/opt/android-sdk"
+export VIDEOS_FOLDER="$PROJECTS/watchlater-downloads/public/videos"
