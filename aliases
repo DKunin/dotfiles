@@ -78,3 +78,10 @@ alias papabear='nvm use 6.2.1'
 
 # OSX Specific
 alias listdownloadedapps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'"
+
+# Vagrant aliases
+alias vag='vagrant'
+alias vagup='vagrant up'
+alias vagdestroy='vagrant destroy'
+alias vagssh='vagrant ssh'
+alias vaghalt='vagrant halt'
