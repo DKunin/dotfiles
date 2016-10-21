@@ -12,4 +12,4 @@ var days = Math.ceil(hours / 24);
 console.log(days);
 console.log('---');
 var letterNumber = days - 11569 + 65;
-console.log('Seneca Letter | href=http://dkunin.github.io/seneca-letters/html/txt0' + letterNumber + '.html');
+console.log('Seneca Letter | href=http://dkunin.github.io/seneca-letters/html/txt' + letterNumber + '.html');

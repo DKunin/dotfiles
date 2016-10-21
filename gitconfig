@@ -4,6 +4,7 @@
 [github]
     user = dkunin
 [color]
+    ui = always
     branch = auto
     diff = auto
     status = auto
@@ -24,13 +25,26 @@
 [alias]
     ci = commit
     st = status
-    sts = status -sb
     br = branch
     co = checkout
     df = diff
     lg = log -p
     who = shortlog -s --
+    lrb = "!f() { \
+        remote="${1:-origin}"; \
+        git ls-remote --heads "$remote"; \
+    }; f"
 [credential]
     helper = osxkeychain
 [push]
-    default = simple    
+    default = simple
+[pretty]
+        custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+        #                     │        │            │            │             └─ author name
+        #                     │        │            │            └─ message
+        #                     │        │            └─ date (relative)
+        #                     │        └─ decorations (branch, heads or tags)
+        #                     └─ hash (abbreviated)
+[help]
+    # Correct typos
+    autocorrect = 1
