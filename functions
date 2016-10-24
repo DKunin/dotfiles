@@ -124,3 +124,12 @@ git_prompt_info_v2 () {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$issueStatus$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
   fi
 }
+# Usage : ProgressBar current total 
+ProgressBar() {
+  _progress=(${1}*100/${2}*100)/100;
+  _done=(${_progress}*4)/10;
+  _left=40-$_done;
+  _fill=$(printf "%${_done}s");
+  _empty=$(printf "%${_left}s");
+  printf "\rProgress : [${_fill// /#}${_empty// /-}] ${_progress}%%";
+}

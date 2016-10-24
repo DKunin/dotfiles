@@ -85,3 +85,13 @@ alias vagup='vagrant up'
 alias vagdestroy='vagrant destroy'
 alias vagssh='vagrant ssh'
 alias vaghalt='vagrant halt'
+
+# Disc utils
+alias diskspace_report="df -P -kHl"
+alias free_diskspace_report="diskspace_report"
+
+# File size
+alias fs="stat -f \"%z bytes\""
+
+alias reload=source ~/.zshrc && echo 'Shell config reloaded from ~/.zshrc'
+
