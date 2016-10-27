@@ -94,4 +94,5 @@ alias free_diskspace_report="diskspace_report"
 alias fs="stat -f \"%z bytes\""
 
 alias reload=source ~/.zshrc && echo 'Shell config reloaded from ~/.zshrc'
-
+# SSH
+alias ssh/droplet='ssh deploy@192.241.145.243'
