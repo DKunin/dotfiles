@@ -31,7 +31,7 @@ alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias editlocal='vim ~/.localenv'
-
+alias mybins='psaux | grep -E "$USER.+bin"'
 # Git aliases
 alias glo="git log --oneline"
 alias gaa="git add -A ."
