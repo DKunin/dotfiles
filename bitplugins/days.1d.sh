@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/bin/node
+#!/usr/bin/env /usr/local/bin/node
 
 // Wakatime
 // BitBar plugin
