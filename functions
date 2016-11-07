@@ -110,20 +110,6 @@ cme() {
   cat $filename | grep .css | xargs ./node_modules/.bin/stylint;
 }
 
-git_prompt_info_v2 () {
-  local ref
-  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]
-  then
-    if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
-    then
-      issueStatus=/$(getticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
-    else 
-      issueStatus=''
-    fi
-    ref=$(command git symbolic-ref HEAD 2> /dev/null) || ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return 0
-    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$issueStatus$(parse_git_dirty)$ZSH_THEME_GIT_PROMPT_SUFFIX"
-  fi
-}
 # Usage : ProgressBar current total 
 ProgressBar() {
   _progress=(${1}*100/${2}*100)/100;
