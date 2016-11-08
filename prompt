@@ -30,4 +30,4 @@ min_pwd () {
     echo %{$fg[black]%}%c
 }
 
-PROMPT='$(spirit_animal)${ret_status} $(min_pwd) $(ticket_status)%'
+PROMPT='$(spirit_animal)${ret_status} $(min_pwd) $(ticket_status) %{$reset_color%}'
