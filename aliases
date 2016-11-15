@@ -17,7 +17,7 @@ alias week="date +%V"
 alias fullupdate="brew update; brew upgrade --all; brew cleanup; sudo gem update --system; sudo gem update; cd $DOTFILES && git pull && cd $BINFILES && git pull"
 alias update="cd $DOTFILES && git pull && cd $BINFILES && git pull"
 alias feed='open http://feedly.com'
-alias mostused='history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10'
+alias mostused="history | awk '{print $2}' | sort | uniq -c | sort -rn | head -10"
 # shows the top 5 processes by cpu usage
 alias top5="ps auxww | sort -rnk 3,3 | head -n 5 | awk '{ print \$3\" (\" \$2 \") \" \$11 }'"
 alias mv='mv -v'
@@ -31,7 +31,7 @@ alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias editlocal='vim ~/.localenv'
-alias mybins='psaux | grep -E "$USER.+bin"'
+alias mybins='ps aux | grep -E "$USER.+bin"'
 # Git aliases
 alias glo="git log --oneline"
 alias gaa="git add -A ."
