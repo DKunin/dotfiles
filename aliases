@@ -40,7 +40,7 @@ alias mm="git fetch && git merge origin/master"
 alias gn="git symbolic-ref -q HEAD | cut -d'/' -f 3"
 alias gnc="gn | pbcopy"
 alias gp="git pull"
-alias fm="mm ; gb ; mur"
+alias fm="mm ; gulp build ; mur"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
