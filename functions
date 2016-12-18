@@ -133,3 +133,7 @@ ProgressBar() {
   _empty=$(printf "%${_left}s");
   printf "\rProgress : [${_fill// /#}${_empty// /-}] ${_progress}%%";
 }
+
+smaller() {
+   ffmpeg -i $1 -vf scale=640:480 $1-small.mp4
+}
