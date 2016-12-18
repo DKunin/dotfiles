@@ -1,9 +1,9 @@
 # Path to your oh-my-zsh installation.
 
-export LANGUAGE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LC_TYPE=en_US.UTF-8
+export LANGUAGE=ru_RU.UTF-8
+export LC_ALL=ru_RU.UTF-8
+export LANG=ru_RU.UTF-8
+export LC_TYPE=ru_RU.UTF-8
 
 export ZSH=$HOME/.oh-my-zsh
 

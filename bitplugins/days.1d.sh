@@ -1,4 +1,4 @@
-#!/usr/bin/env /usr/local/bin/node
+#!/usr/local/bin/node
 
 // Wakatime
 // BitBar plugin
@@ -11,5 +11,3 @@ var hours = minutes / 60;
 var days = Math.ceil(hours / 24);
 console.log(days);
 console.log('---');
-var letterNumber = days - 11569 + 65;
-console.log('Seneca Letter | href=http://dkunin.github.io/seneca-letters/html/txt' + letterNumber + '.html');
