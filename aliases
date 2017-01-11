@@ -34,15 +34,17 @@ alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias editlocal='vim ~/.localenv'
 alias mybins='ps aux | grep -E "$USER.+bin"'
+
 # Git aliases
 alias glo="git log --oneline"
 alias gaa="git add -A ."
 alias gclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
-alias mm="git fetch && git merge origin/master"
+alias gmm="git fetch && git merge origin/master"
 alias gn="git symbolic-ref -q HEAD | cut -d'/' -f 3"
 alias gnc="gn | pbcopy"
 alias gp="git pull"
-alias fm="mm ; gulp build ; mur"
+alias gfm="gmm ; gsc; gulp build ; mur"
+alias gsc="git diff --name-only --diff-filter=U"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
