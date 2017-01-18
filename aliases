@@ -1,5 +1,5 @@
-
-
+# General
+alias aliases='grep alias < ~/.aliases | cut -c 7- | sort'
 alias lsa='ls -lah'
 alias mkdir='mkdir -p'
 alias chown='chown -Rv'
@@ -34,15 +34,17 @@ alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias editlocal='vim ~/.localenv'
 alias mybins='ps aux | grep -E "$USER.+bin"'
+
 # Git aliases
 alias glo="git log --oneline"
 alias gaa="git add -A ."
 alias gclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
-alias mm="git fetch && git merge origin/master"
+alias gmm="git fetch && git merge origin/master"
 alias gn="git symbolic-ref -q HEAD | cut -d'/' -f 3"
 alias gnc="gn | pbcopy"
 alias gp="git pull"
-alias fm="mm ; gulp build ; mur"
+alias gfm="gmm ; gsc; gulp build ; mur"
+alias gsc="git diff --name-only --diff-filter=U"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
@@ -81,6 +83,8 @@ alias papabear='nvm use 6.2.1'
 
 # OSX Specific
 alias listdownloadedapps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'"
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # Vagrant aliases
 alias vag='vagrant'

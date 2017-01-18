@@ -102,12 +102,10 @@ gco() {
 cme() {
   filename='/tmp/tempdiffwithmaster';
   comparemaster > $filename;
-  cat $filename | grep .es6 | xargs ./node_modules/.bin/eslint;
-  cat $filename | grep .js | xargs ./node_modules/.bin/eslint;
-  cat $filename | grep .es6 | xargs ./node_modules/.bin/jscs;
-  cat $filename | grep .js | xargs ./node_modules/.bin/jscs;
-  cat $filename | grep .styl | xargs ./node_modules/.bin/stylint;
-  cat $filename | grep .css | xargs ./node_modules/.bin/stylint;
+  cat $filename | grep .es6 | xargs ./node_modules/.bin/eslint $1; 
+  cat $filename | grep .js | xargs ./node_modules/.bin/eslint $1;
+  cat $filename | grep .styl | xargs ./node_modules/.bin/stylint $1;
+  cat $filename | grep .css | xargs ./node_modules/.bin/stylint $1;
 }
 
 # Usage : ProgressBar current total 
@@ -122,4 +120,16 @@ ProgressBar() {
 
 smaller() {
    ffmpeg -i $1 -vf scale=640:480 $1-small.mp4
+}
+
+base64() {
+  openssl base64 < "$1" | tr -d '\n' | pbcopy
+}
+
+# clean the current directory
+function clean() {
+    read -p "remove everything here? (y/N)" yn
+    if [ $yn = "y" ]; then
+        rm -rf ./* ./.*
+    fi
 }
