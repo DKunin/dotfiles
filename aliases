@@ -70,6 +70,7 @@ alias notes='cd $PROJECTS/work-nindo'
 alias syncvideo='rsync -aivhi --progress $VIDEOS_FOLDER/* root@$TABLET_SSH:/sdcard/Download/videos'
 alias syncmp3='rsync -aivhir --progress $PROJECTS/watchlater-downloads/public/mp3 root@$TABLET_SSH:/sdcard/Music'
 alias cleanvideos='rm -rf $PROJECTS/watchlater-downloads/public/videos/*'
+alias pretty='prettier $1 --single-quote --tab-width 4 --write'
 
 # Gulp
 alias gb='npm test && gulp build && sd'
