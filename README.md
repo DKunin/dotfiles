@@ -9,6 +9,11 @@
 
 # sublime
 - TodoReview: Settings for TodoReview plugin
+- Snippets: snippets for sublime stuff, to link:
+```console
+ln -s $DOTFILES/sublime/snippets /Users/USER/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+
+```
 
 # root
 - alisases - selfexplanatory :)

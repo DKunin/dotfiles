@@ -1,0 +1,8 @@
+<snippet>
+    <content>
+        <![CDATA[reduce(function(${1:newArray}, ${2:singleItem}) {
+            return ${1:newArray};
+        }, []);]]>
+    </content>
+    <tabTrigger>rd</tabTrigger>
+</snippet>
