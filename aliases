@@ -28,6 +28,7 @@ alias cp='cp -v'
 
 # Requires specific structure
 alias code='cd $PROJECTS'
+alias know='cd $PROJECTS/knowledge'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
