@@ -1,7 +1,4 @@
-# Create a new directory and enter it
-function mk() {
-  mkdir -p "$@" && cd "$@"
-}
+#!/usr/bin/env bash
 
 # Extra many types of compressed packages
 # Credit: http://nparikh.org/notes/zshrc.txt
@@ -109,7 +106,7 @@ cme() {
 }
 
 # Usage : ProgressBar current total 
-ProgressBar() {
+function progressBar() {
   _progress=(${1}*100/${2}*100)/100;
   _done=(${_progress}*4)/10;
   _left=40-$_done;
@@ -118,11 +115,11 @@ ProgressBar() {
   printf "\rProgress : [${_fill// /#}${_empty// /-}] ${_progress}%%";
 }
 
-smaller() {
+function smaller() {
    ffmpeg -i $1 -vf scale=640:480 $1-small.mp4
 }
 
-base64() {
+function base64() {
   openssl base64 < "$1" | tr -d '\n' | pbcopy
 }
 
@@ -132,4 +129,8 @@ function clean() {
     if [ $yn = "y" ]; then
         rm -rf ./* ./.*
     fi
+}
+
+function sideBySide() {
+  montage $1 -tile 2x1 -geometry +0+0 $2
 }

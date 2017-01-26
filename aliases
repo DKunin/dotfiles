@@ -39,13 +39,14 @@ alias mybins='ps aux | grep -E "$USER.+bin"'
 # Git aliases
 alias glo="git log --oneline"
 alias gaa="git add -A ."
-alias gclean="git branch --merged | grep -v "\*" | xargs -n 1 git branch -d"
+alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 alias gmm="git fetch && git merge origin/master"
 alias gn="git symbolic-ref -q HEAD | cut -d'/' -f 3"
 alias gnc="gn | pbcopy"
 alias gp="git pull"
 alias gfm="gmm ; gsc; gulp build ; mur"
 alias gsc="git diff --name-only --diff-filter=U"
+alias gop="git-open"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
@@ -71,8 +72,8 @@ alias notes='cd $PROJECTS/work-nindo'
 alias syncvideo='rsync -aivhi --progress $VIDEOS_FOLDER/* root@$TABLET_SSH:/sdcard/Download/videos'
 alias syncmp3='rsync -aivhir --progress $PROJECTS/watchlater-downloads/public/mp3 root@$TABLET_SSH:/sdcard/Music'
 alias cleanvideos='rm -rf $PROJECTS/watchlater-downloads/public/videos/*'
-alias pretty='prettier $1 --single-quote --tab-width 4 --write'
-alias side-by-side='montage $1 -tile 2x1 -geometry +0+0 $2'
+alias pretty='prettier --single-quote --tab-width 4 --write'
+
 # Gulp
 alias gb='npm test && gulp build && sd'
 alias gw='gulp apps:watch'
@@ -93,6 +94,15 @@ alias vagup='vagrant up'
 alias vagdestroy='vagrant destroy'
 alias vagssh='vagrant ssh'
 alias vaghalt='vagrant halt'
+
+# Docker
+alias dr='docker run'
+alias dri='docker run --rm -it'
+alias dp='docker ps -a|grep -v gcr'
+alias drm='docker rm'
+alias dbi='docker build -t'
+alias di='docker images | grep -v gcr'
+alias docker-deamon='eval $(minikube docker-env)'
 
 # Disc utils
 alias diskspace_report="df -P -kHl"
