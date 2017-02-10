@@ -134,3 +134,7 @@ function clean() {
 function sideBySide() {
   montage $1 -tile 2x1 -geometry +0+0 $2
 }
+
+function tp() {
+  tinypng $1 -k $TINY_PNG_KEY
+}
