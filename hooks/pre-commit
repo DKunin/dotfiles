@@ -1,0 +1,12 @@
+#!/bin/bash
+
+filename='/tmp/tempdiffwithmaster'
+comparemaster > $filename
+git diff --name-only --cached >> $filename
+
+cat $filename | grep --color=auto .es6 | xargs ./node_modules/.bin/eslint $1 --quiet
+cat $filename | grep --color=auto .js | xargs ./node_modules/.bin/eslint $1 --quiet
+cat $filename | grep --color=auto .styl | xargs ./node_modules/.bin/stylint $1 --quiet
+cat $filename | grep --color=auto .css | xargs ./node_modules/.bin/stylint $1 --quiet
+
+exit $?;
