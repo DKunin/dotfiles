@@ -74,15 +74,11 @@ alias syncmp3='rsync -aivhir --progress $PROJECTS/watchlater-downloads/public/mp
 alias cleanvideos='rm -rf $PROJECTS/watchlater-downloads/public/videos/*'
 alias pretty='prettier --single-quote --tab-width 4 --write'
 alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
+alias cme="$DOTFILES/hooks/pre-commit"
 
 # Gulp
 alias gb='npm test && gulp build && sd'
 alias gw='gulp apps:watch'
-
-# NVM aliases
-alias cub='nvm use 4.2.3'
-alias mamabear='nvm use 5.9.0'
-alias papabear='nvm use 6.2.1'
 
 # OSX Specific
 alias listdownloadedapps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'"
@@ -90,11 +86,11 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # Vagrant aliases
-alias vag='vagrant'
-alias vagup='vagrant up'
-alias vagdestroy='vagrant destroy'
-alias vagssh='vagrant ssh'
-alias vaghalt='vagrant halt'
+alias v='vagrant'
+alias vup='vagrant up'
+alias vde='vagrant destroy'
+alias vss='vagrant ssh'
+alias vha='vagrant halt'
 
 # Docker
 alias dr='docker run'

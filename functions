@@ -96,15 +96,6 @@ gco() {
 	git co $1 && comparemaster
 }
 
-cme() {
-  filename='/tmp/tempdiffwithmaster';
-  comparemaster > $filename;
-  cat $filename | grep .es6 | xargs ./node_modules/.bin/eslint $1; 
-  cat $filename | grep .js | xargs ./node_modules/.bin/eslint $1;
-  cat $filename | grep .styl | xargs ./node_modules/.bin/stylint $1;
-  cat $filename | grep .css | xargs ./node_modules/.bin/stylint $1;
-}
-
 # Usage : ProgressBar current total 
 function progressBar() {
   _progress=(${1}*100/${2}*100)/100;
