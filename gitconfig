@@ -34,6 +34,7 @@
         remote="${1:-origin}"; \
         git ls-remote --heads "$remote"; \
     }; f"
+	quick-stats = ! /usr/local/bin/git-quick-stats
 [credential]
     helper = osxkeychain
 [push]

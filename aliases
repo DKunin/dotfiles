@@ -47,6 +47,7 @@ alias gp="git pull"
 alias gfm="gmm ; gsc; gulp build ; mur"
 alias gsc="git diff --name-only --diff-filter=U"
 alias gop="git-open"
+alias gqs="git-quick-stats"
 
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
