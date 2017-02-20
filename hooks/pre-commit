@@ -4,8 +4,8 @@ filename='/tmp/tempdiffwithmaster'
 comparemaster > $filename
 git diff --name-only --cached >> $filename
 
-cat $filename | grep --color=auto .es6 | xargs ./node_modules/.bin/eslint $1 --quiet
-cat $filename | grep --color=auto .js | xargs ./node_modules/.bin/eslint $1 --quiet
-cat $filename | grep --color=auto .styl | xargs ./node_modules/.bin/stylint $1 --quiet
+cat $filename | grep .es6 | xargs ./node_modules/.bin/eslint $1 --quiet
+cat $filename | grep .js | grep -v .json | xargs ./node_modules/.bin/eslint $1 --quiet
+cat $filename | grep .styl | xargs ./node_modules/.bin/stylint $1;
 
 exit $?;
