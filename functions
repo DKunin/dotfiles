@@ -133,3 +133,7 @@ function tp() {
 function base64decode() {
   python -m base64 -d $1;
 }
+
+function foursplit() {
+  convert -crop 46.5%x50% +repage $1 $1
+}
