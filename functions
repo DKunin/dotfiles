@@ -147,3 +147,7 @@ function codeClimate(){
   --volume /tmp/cc:/tmp/cc \
   codeclimate/codeclimate analyze
 }
+
+function getconfig() {
+  curl -L -s https://raw.githubusercontent.com/dkunin/dotfiles/master/$1 -o .$1
+}

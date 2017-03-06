@@ -17,9 +17,7 @@ module.exports = {
   }),
 
   create: prompt('create github repo', 'no', function(val){
-    val = val.indexOf('y') !== -1 ? true : false;
-
-    if(val){
+    if(val.indexOf('y') !== -1){
       cp.execSync("git init");
       console.log('enter github password:');
       cp.execSync("curl -u '"+USER+"' https://api.github.com/user/repos -d " +
@@ -29,11 +27,10 @@ module.exports = {
 
     return undefined;
   }),
-  scaffold: prompt('Add scaffold files', 'no', function(val){
-    val = val.indexOf('y') !== -1 ? true : false;
 
-    if(val){
-      cp.execSync("geteslint && geteditorconfig && getreadme && echo node_modules >> .gitignore && :> .npmrc");
+  scaffold: prompt('Add scaffold files', 'no', function(val){
+    if(val.indexOf('y') !== -1){
+      cp.execSync("getconfig eslint && getreadme && echo node_modules >> .gitignore && :> .npmrc");
     }
 
     return undefined;
@@ -46,6 +43,8 @@ module.exports = {
     url: 'git://github.com/'+USER+'/' + basename + '.git' },
 
   bugs: { url: 'https://github.com/'+USER+'/' + basename + '/issues' },
+
+  scripts: { test: 'echo test', start: 'node ./', dev: 'node ./', build: 'NODE_ENV=production node ./' },
 
   homepage: "https://github.com/"+USER+"/" + basename,
 
