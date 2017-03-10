@@ -11,8 +11,14 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
+# Disable press-and-hold for keys in favor of key repeat.
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
 # Increase window resize speed for Cocoa applications
 defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+# Speed up mission control animations.
+defaults write com.apple.dock expose-animation-duration -float 0.1
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -39,6 +45,10 @@ defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
 
+# Save screenshots to user screenshots directory instead of desktop.
+# mkdir ~/screenshots
+# defaults write com.apple.screencapture location -string ~/screenshots
+
 # Finder: disable window animations and Get Info animations
 defaults write com.apple.finder DisableAllAnimations -bool true
 
@@ -47,6 +57,9 @@ defaults write com.apple.finder ShowPathbar -bool true
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Show all filename extensions.
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -65,6 +78,18 @@ defaults write com.apple.dock tilesize -int 45
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+# Use the dark theme.
+defaults write ~/Library/Preferences/.GlobalPreferences AppleInterfaceStyle -string "Dark"
+
+# Disable mouse enlargement with jiggle.
+defaults write ~/Library/Preferences/.GlobalPreferences CGDisableCursorLocationMagnification -bool true
+
+# Show the /Volumes folder.
+sudo chflags nohidden /Volumes
+
+# Don't write DS_Store files to network shares.
+defaults write DSDontWriteNetworkStores com.apple.desktopservices -int 1
 
 ###############################################################################
 # Kill affected applications                                                  #

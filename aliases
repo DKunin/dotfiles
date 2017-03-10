@@ -84,7 +84,6 @@ alias gw='gulp apps:watch'
 # OSX Specific
 alias listdownloadedapps="find /Applications -path '*Contents/_MASReceipt/receipt' -maxdepth 4 -print |\sed 's#.app/Contents/_MASReceipt/receipt#.app#g; s#/Applications/##'"
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
 
 # Vagrant aliases
 alias v='vagrant'
@@ -101,8 +100,7 @@ alias drm='docker rm'
 alias dbi='docker build -t'
 alias di='docker images | grep -v gcr'
 alias docker-deamon='eval $(minikube docker-env)'
-alias docker-vue-dev='docker run --rm -v $(pwd):/src -w /src -p 8080:8080 node:6 bash -c "npm install && npm run dev"'
-alias docker-vue-build='docker run --rm -v $(pwd):/src -w /src node:6 bash -c "npm install && npm run build"'
+alias docker-restore='dp | grep dkunin | awk "{ print $1}"'
 
 # Disc utils
 alias diskspace_report="df -P -kHl"
@@ -111,6 +109,7 @@ alias free_diskspace_report="diskspace_report"
 # File size
 alias fs="stat -f \"%z bytes\""
 
-alias reload=source ~/.zshrc && echo 'Shell config reloaded from ~/.zshrc'
+alias reload='source ~/.zshrc && echo "Shell config reloaded from ~/.zshrc"'
+
 # SSH
 alias ssh/droplet='ssh deploy@192.241.145.243'
