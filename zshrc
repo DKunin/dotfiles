@@ -1,5 +1,5 @@
 source $HOME/.env
-plugins=(git, common-aliases, zsh-wakatime, sublime)
+plugins=(git, common-aliases, sublime)
 source $ZSH/oh-my-zsh.sh
 source $(brew --prefix autoenv)/activate.sh
 

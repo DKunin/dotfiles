@@ -1,7 +1,7 @@
 'use strict';
 
 var keys = [];
-var commands = [ 'alt' ];
+var commands = ['alt'];
 var altCommands = [];
 
 Phoenix.notify('Phoenix config reloaded');
@@ -15,136 +15,75 @@ var PIN_TIMEOUT_MS = 2000;
 var keyHandlers = {};
 
 function clearKeyArray() {
-  keysArray = [];
-}
-
-function enablePINmode() {
-  clearTimeout(pinTimeout);
-  enteringPin = true;
-
-  pinTimeout = setTimeout(function(){
-    enteringPin = false;
-    processPIN(PIN.join(''));
-  }, PIN_TIMEOUT_MS);
-}
-
-function enterPINnumber(number) {
-  PIN.push(number);
-}
-
-function processPIN(pin) {
-  Task.run('/bin/zsh', ['/Users/dikunin/Projects/bin/skeleton', pin], function(result) {
-    if (result.error) {
-      Phoenix.notify(result.error);
-    }
-    Phoenix.notify(result.output);
-    PIN = [];
-  });  
+    keysArray = [];
 }
 
 function half(key, x) {
-  keysArray.push(key);
-  var X = 0;
-  clearTimeout(clearKeysTimeout);
-  var keysPressed = (keysArray.filter(function(singleKey){ 
-    return singleKey === key;
-  }).length % 4);
-  if (Window.focused()) {
-    var win = Window.focused();
-    var size = win.size();
-    var frame = win.screen().flippedFrame();
-    if (!x) {
-      X = 0;
-    } else {
-      X = frame.width / 2;
+    keysArray.push(key);
+    var X = 0;
+    clearTimeout(clearKeysTimeout);
+    var keysPressed = keysArray.filter(function(singleKey) {
+        return singleKey === key;
+    }).length %
+        4;
+    if (Window.focused()) {
+        var win = Window.focused();
+        var size = win.size();
+        var frame = win.screen().flippedFrame();
+        if (!x) {
+            X = 0;
+        } else {
+            X = frame.width / 2;
+        }
+        if (keysPressed <= 2) {
+            win.setTopLeft({ x: X, y: 0 });
+            size.width = frame.width / 2;
+            size.height = frame.height / keysPressed;
+        } else if (keysPressed > 2) {
+            win.setTopLeft({ x: X, y: frame.height / 2 });
+            size.width = frame.width / 2;
+            size.height = frame.height / 2;
+        }
+        win.setSize(size);
     }
-    if (keysPressed <= 2) {
-      win.setTopLeft({ x: X, y: 0 });
-      size.width = frame.width / 2;
-      size.height = frame.height / keysPressed;
-    } else if (keysPressed > 2) {
-      win.setTopLeft({ x: X, y: frame.height / 2 });
-      size.width = frame.width / 2;
-      size.height = frame.height / 2;
-    }
-    win.setSize(size);
-  }
-  clearKeysTimeout = setTimeout(clearKeyArray, PIN_TIMEOUT_MS);
-};
-
-function third(key) {
-  keysArray.push(key);
-  clearTimeout(clearKeysTimeout);
-  var keysPressed = (keysArray.filter(function(singleKey){ 
-    return singleKey === key;
-  }).length % 3);
-  if (Window.focused()) {
-    var win = Window.focused();
-    var size = win.size();
-    var frame = win.screen().visibleFrameInRectangle();
-    win.setTopLeft({ x: 0 + ((frame.width/3) * keysPressed), y: 0 });
-    size.width = frame.width / 3;
-    size.height = frame.height;
-    win.setSize(size);
-  }
-  clearKeysTimeout = setTimeout(clearKeyArray, 2000);
-};
-
-function switchApp(appName) {
-  App.launch(appName).focus();
+    clearKeysTimeout = setTimeout(clearKeyArray, PIN_TIMEOUT_MS);
 }
 
+function third(key) {
+    keysArray.push(key);
+    clearTimeout(clearKeysTimeout);
+    var keysPressed = keysArray.filter(function(singleKey) {
+        return singleKey === key;
+    }).length %
+        3;
+    if (Window.focused()) {
+        var win = Window.focused();
+        var size = win.size();
+        var frame = win.screen().visibleFrameInRectangle();
+        win.setTopLeft({ x: 0 + frame.width / 3 * keysPressed, y: 0 });
+        size.width = frame.width / 3;
+        size.height = frame.height;
+        win.setSize(size);
+    }
+    clearKeysTimeout = setTimeout(clearKeyArray, 2000);
+}
+
+function switchApp(appName) {
+    App.launch(appName).focus();
+}
 
 var handler = new Key('[', commands, half.bind(null, 1, false));
 var handler2 = new Key(']', commands, half.bind(null, 2, true));
 var handler3 = new Key('\\', commands, third.bind(null, 3));
 
-[
-  { key: 'f', app: 'Franz'},
-  { key: 'i', app: 'iTerm'},
-  { key: 's', app: 'Sublime Text'},
-  { key: 'c', app: 'Google Chrome'},
-  { key: 'j', app: 'Jira'},
-  { key: 't', app: 'Todoist'}
-].forEach(function(singleKeyCode){
-  keyHandlers[singleKeyCode.app] = new Key(singleKeyCode.key, commands, function(){
-    switchApp(singleKeyCode.app);
-  });
-
-})
-
-var handler9 = new Key('p', commands, function(){
-  enablePINmode();
-  Phoenix.notify('Enter PIN');
-});
-
 var handler10 = new Key('0', commands, function() {
-  if (Window.focused()) {
-    var win = Window.focused();
-    var size = win.size();
-    var frame = win.screen().flippedFrame();
-    win.setTopLeft({ x: 0, y: 0 });
-    size.width = frame.width;
-    size.height = frame.height;
-    win.setSize(size);
-  }
-});
-
-var handler11 = new Key('z', commands, function(){
-  //Task.run('/bin/sh', ["-c", "LANG='ja_JP.UTF-8' date '+%a %-m/%-d %-H:%M'"], function(result) {
-  Task.run('/Users/dkunin/Projects/bin/skeleton', ["-c", "alias"], function(result) {
-    if (result.error) {
-      Phoenix.notify(result.error);
+    if (Window.focused()) {
+        var win = Window.focused();
+        var size = win.size();
+        var frame = win.screen().flippedFrame();
+        win.setTopLeft({ x: 0, y: 0 });
+        size.width = frame.width;
+        size.height = frame.height;
+        win.setSize(size);
     }
-    Phoenix.notify(result.output);
-  }); 
-});
-
-[1,2,3,4,5,6,7,8,9].forEach(function(number) {
-  keyHandlers['key-' + number] = new Key(String(number), commands, function(){
-    if (enteringPin) {
-      enablePINmode();
-      enterPINnumber(number);
-    }
-  });
 });
