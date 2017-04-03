@@ -1,18 +1,78 @@
-#!/bin/bash
+#!/usr/local/bin/node
 
-filename='/tmp/tempdiffwithmaster'
-comparemaster > $filename
-git diff --name-only --cached >> $filename
+const CLIEngine = require('eslint').CLIEngine;
+const child = require('child_process');
+const eslintConfig = require('@avito/eslint-config-react');
+const chalk = require('chalk');
 
-cat $filename | grep .es6 | xargs ./node_modules/.bin/eslint $1 --quiet
-cat $filename | grep .js$ | xargs ./node_modules/.bin/eslint $1 --quiet
-cat $filename | grep .styl | xargs ./node_modules/.bin/stylint $1;
+const cli = new CLIEngine(Object.assign({
+    envs: ['browser', 'mocha']
+}, eslintConfig));
 
-if [ $? -ne 0 ]; 
-then
-      exit 1;
-else
-      exit 0;
-fi
+if (process.argv[2] && process.argv[2].trim() === '-n') {
+    process.exit();
+    return;
+}
 
+/**
+ * Returns the severity of warning or error
+ * @param {Object} message message object to examine
+ * @returns {string} severity level
+ * @private
+ */
+function getMessageType(message) {
+    if (message.fatal || message.severity === 2) {
+        return 'Error';
+    }
+    return 'Warning';
+}
 
+/**
+ * Compact reporter
+ * @param  {[type]} results [description]
+ * @return {[type]}         [description]
+ */
+function processResults(results) {
+    let output = '';
+    let total = 0;
+
+    results.forEach(result => {
+        const messages = result.messages;
+        messages.forEach(message => {
+            const isError = getMessageType(message) === 'Error';
+            output += chalk.cyan(result.filePath + `:${message.line || 0}:${message.column || 0}`) + ' : ';
+            output += chalk[isError ? 'red' : 'yellow'](`${getMessageType(message)} - ${message.message} (${message.ruleId})`);
+            output += '\n';
+            if (isError) {
+                total += 1;
+            }
+        });
+    });
+
+    if (total > 0) {
+        output += `\n${total} problem${total !== 1 ? 's' : ''}`;
+    }
+
+    return { output, total: Number(total) };
+}
+
+child.exec('comparemaster', function(error, stdout, stderr) {
+    if (error !== null) {
+        // eslint-disable-next-line
+        console.log(stderr);
+        throw new Error('Failure: ' + error);
+    }
+
+    const messages = stdout.split('\n').reduce((newArray, singleFile) => {
+        if (/\.es6$/.test(singleFile) || /\.js$/.test(singleFile)) {
+            return newArray.concat(cli.executeOnFiles([singleFile]).results);
+        }
+        return newArray;
+    }, []);
+
+    // eslint-disable-next-line
+    console.log(processResults(messages).output);
+    // console.log(JSON.stringify(messages, null, 4));
+
+    process.exit(processResults(messages).total);
+});
