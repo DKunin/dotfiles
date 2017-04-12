@@ -1,0 +1,37 @@
+{
+	"color_scheme": "Packages/User/SublimeLinter/Flatgrammer (SL).tmTheme",
+	"drag_text": false,
+	"draw_white_space": "all",
+	"folder_exclude_patterns":
+	[
+		".git",
+		".idea",
+		"node_modules"
+	],
+	"font_face": "Hack",
+	"font_options":
+	[
+		"gray_antialias"
+	],
+	"font_size": 14,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"open_files_in_new_window": false,
+	"quick_panel_small": true,
+	"sidebar_size_12": true,
+	"sidebar_size_13": true,
+	"sidebar_size_14": true,
+	"tab_size": 4,
+	"tabs_small": true,
+	"theme": "Flatgrammer.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"word_wrap": true
+}
