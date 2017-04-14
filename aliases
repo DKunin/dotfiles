@@ -51,6 +51,13 @@ alias pretty='prettier --single-quote --tab-width 4 --write'
 alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
 alias cme='$DOTFILES/hooks/pre-commit'
 
+# Slack statuses aliases
+alias ssw='slackStatus "working" ":metal:"'
+alias sse='slackStatus "running an errand, be right back" ":slon_run:"'
+alias ssm='slackStatus "at a meeting" ":calendar:"'
+alias ssa='slackStatus "afr" ":rat:"'
+alias ssl='slackStatus "lunch" ":bento:"'
+
 # Vagrant aliases
 alias v='vagrant'
 alias vup='vagrant up'
