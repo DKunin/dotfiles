@@ -1,59 +1,70 @@
 // ln -s $DOTFILES/npm-init ~/.npm-init.js
 // npm config set init-module ~/.npm-init.js
 
-var cp = require('child_process');  
-var priv;
+const cp = require('child_process');
+const USER = process.env.GITHUB_USERNAME || 'dkunin';
+let priv;
 
-var USER = process.env.GITHUB_USERNAME || 'dkunin';
 
 module.exports = {
+    name: prompt('name', basename),
 
-  name: prompt('name', basename || package.name),
+    version: '0.0.1',
 
-  version: '0.0.1',
+    private: prompt('private', 'false', function(val) {
+        return (priv = typeof val === 'boolean' ? val : !!val.match('true'));
+    }),
 
-  private: prompt('private', 'false', function(val){
-    return priv = (typeof val === 'boolean') ? val : !!val.match('true')
-  }),
+    create: prompt('create github repo', 'no', function(val) {
+        if (val.indexOf('y') !== -1) {
+            cp.execSync('git init');
+            console.log('enter github password:');
+            cp.execSync(
+                `curl -u "${USER}" https://api.github.com/user/repos -d '\'{"name": "${basename}", "private": "${priv ? 'true' : 'false'}"}'`
+            );
+            cp.execSync(
+                `git remote add origin https://github.com/${USER}/${basename}.git`
+            );
+        }
 
-  create: prompt('create github repo', 'no', function(val){
-    if(val.indexOf('y') !== -1){
-      cp.execSync("git init");
-      console.log('enter github password:');
-      cp.execSync("curl -u '"+USER+"' https://api.github.com/user/repos -d " +
-        "'{\"name\": \""+basename+"\", \"private\": "+ ((priv) ? 'true' : 'false')  +"}' ");
-      cp.execSync('git remote add origin '+ 'https://github.com/'+USER+'/' + basename + '.git');
+        return undefined;
+    }),
+
+    scaffold: prompt('Add scaffold files', 'no', function(val) {
+        if (val.indexOf('y') !== -1) {
+            cp.execSync(
+                'getconfig eslintrc && getreadme && echo node_modules >> .gitignore && :> .npmrc'
+            );
+        }
+
+        return undefined;
+    }),
+
+    main: prompt('entry point', 'index.js'),
+
+    repository: {
+        type: 'git',
+        url: 'git://github.com/' + USER + '/' + basename + '.git'
+    },
+
+    bugs: { url: 'https://github.com/' + USER + '/' + basename + '/issues' },
+
+    scripts: {
+        test: 'echo test',
+        start: 'node ./',
+        dev: 'node ./',
+        build: 'NODE_ENV=production node ./'
+    },
+
+    homepage: 'https://github.com/' + USER + '/' + basename,
+
+    keywords: prompt(function(s) {
+        return s.split(/\s+/);
+    }),
+
+    license: 'MIT',
+
+    cleanup: function(cb) {
+        cb(null, undefined);
     }
-
-    return undefined;
-  }),
-
-  scaffold: prompt('Add scaffold files', 'no', function(val){
-    if(val.indexOf('y') !== -1){
-      cp.execSync("getconfig eslintrc && getreadme && echo node_modules >> .gitignore && :> .npmrc");
-    }
-
-    return undefined;
-  }),
-
-  main: prompt('entry point', 'index.js'),
-
-  repository: {
-    type: 'git',
-    url: 'git://github.com/'+USER+'/' + basename + '.git' },
-
-  bugs: { url: 'https://github.com/'+USER+'/' + basename + '/issues' },
-
-  scripts: { test: 'echo test', start: 'node ./', dev: 'node ./', build: 'NODE_ENV=production node ./' },
-
-  homepage: "https://github.com/"+USER+"/" + basename,
-
-  keywords: prompt(function (s) { return s.split(/\s+/) }),
-
-  license: 'MIT',
-
-  cleanup: function(cb){
-    cb(null, undefined)
-  }
-
-}
+};
