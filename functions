@@ -148,10 +148,6 @@ function codeClimate(){
   codeclimate/codeclimate analyze
 }
 
-function getconfig() {
-  curl -L -s https://raw.githubusercontent.com/dkunin/dotfiles/master/$1 -o .$1
-}
-
-function slackStatus() {
-  curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
-}
+# function slackStatus() {
+#   curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
+# }

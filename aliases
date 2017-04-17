@@ -52,11 +52,11 @@ alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
 alias cme='$DOTFILES/hooks/pre-commit'
 
 # Slack statuses aliases
-alias ssw='slackStatus "working" ":metal:"'
-alias sse='slackStatus "running an errand, be right back" ":slon_run:"'
-alias ssm='slackStatus "at a meeting" ":calendar:"'
-alias ssa='slackStatus "afr" ":rat:"'
-alias ssl='slackStatus "lunch" ":bento:"'
+alias ssw='slack-status "working" ":metal:"'
+alias sse='slack-status "running an errand, be right back" ":slon_run:"'
+alias ssm='slack-status "at a meeting" ":calendar:"'
+alias ssa='slack-status "afr" ":rat:"'
+alias ssl='slack-status "lunch" ":bento:"'
 
 # Vagrant aliases
 alias v='vagrant'
