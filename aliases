@@ -53,6 +53,7 @@ alias tweet='t update'
 alias pretty='prettier --single-quote --tab-width 4 --write'
 alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
 alias cme='$DOTFILES/hooks/pre-commit'
+alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"
 
 # Slack statuses aliases
 alias ssw='slack-status "working" ":metal:"'
