@@ -41,6 +41,7 @@ alias gfm="gmm ; gsc; gulp build ; mur"
 alias gop="git-open"
 alias gqs="git-quick-stats"
 alias grc="git rebase --continue"
+alias gom="git co master"
 
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
