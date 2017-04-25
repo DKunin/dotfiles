@@ -5,7 +5,6 @@ const cp = require('child_process');
 const USER = process.env.GITHUB_USERNAME || 'dkunin';
 let priv;
 
-
 module.exports = {
     name: prompt('name', basename),
 
@@ -20,7 +19,7 @@ module.exports = {
             cp.execSync('git init');
             console.log('enter github password:');
             cp.execSync(
-                `curl -u "${USER}" https://api.github.com/user/repos -d '\'{"name": "${basename}", "private": "${priv ? 'true' : 'false'}"}'`
+                `curl -u "${USER}" https://api.github.com/user/repos -d '{"name": "${basename}", "private": "${priv ? true : false}"}'`
             );
             cp.execSync(
                 `git remote add origin https://github.com/${USER}/${basename}.git`
