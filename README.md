@@ -1,5 +1,8 @@
 # DKunin's personal dotfiles, functions, quirks and settings
 
+# TemperMonkey Scripts
+- stash-editor-jump : adds input field to stash for you to specify folder and use it with: [menubar-helper](https://github.com/DKunin/menubar-helper)
+
 # bitplugins
 - days : Display number of days, since you were born
 - dirty : Get dirty projects (not staged, or non commited)
