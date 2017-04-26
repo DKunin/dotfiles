@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         StashEditorJump
 // @namespace    http://stash.msk.avito.ru
-// @version      0.8
+// @version      0.9
 // @description  Add ability to link to file position from PR.
 // @author       DKunin
 // @include      http://stash.msk.avito.ru/projects/*/repos/*/pull-requests/*
@@ -40,7 +40,9 @@
     document.addEventListener('click', function(event) {
         if (
             event.target.classList.toString() ===
-            'line-number line-number-to bitbucket-gutter-marker'
+            'line-number line-number-to bitbucket-gutter-marker' ||
+            event.target.classList.toString() ===
+            'line-number line-number-from bitbucket-gutter-marker'
         ) {
             var file = event.target.closest('.file-content');
             var lineNumber = file.querySelector(
