@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         StashEditorJump
 // @namespace    http://stash.msk.avito.ru
-// @version      0.9
+// @version      0.10
 // @description  Add ability to link to file position from PR.
 // @author       DKunin
-// @include      http://stash.msk.avito.ru/projects/*/repos/*/pull-requests/*
-// @include      http://stash.msk.avito.ru/projects/*/repos/*/commits/*
+// @include      */projects/*/repos/*/pull-requests/*
+// @include      */projects/*/repos/*/commits/*
 // @grant        none
 // ==/UserScript==
 
