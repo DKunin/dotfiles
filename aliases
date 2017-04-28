@@ -40,7 +40,7 @@ alias gsc="git diff --name-only --diff-filter=U"
 alias gfm="gmm ; gsc; gulp build ; mur"
 alias gop="git-open"
 alias gqs="git-quick-stats"
-alias grc="git rebase --continue"
+alias grc="git add . && git rebase --continue"
 alias gom="git co master"
 
 # Specific soft needs to be installed
@@ -53,7 +53,7 @@ alias tweet='t update'
 alias pretty='prettier --single-quote --tab-width 4 --write'
 alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
 alias cme='$DOTFILES/hooks/pre-commit'
-alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"
+alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"t
 
 # Slack statuses aliases
 alias ssw='slack-status "working" ":metal:"'
