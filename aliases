@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # General
+alias ls='ls -G'
 alias aliases='grep alias < ~/.aliases | cut -c 7- | sort'
 alias lsa='ls -lah'
 alias mkdir='mkdir -p'
