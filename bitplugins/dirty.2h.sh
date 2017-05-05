@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 
 # Get dirty projects (not staged, or non commited)
 # BitBar plugin

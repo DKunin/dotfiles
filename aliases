@@ -31,6 +31,7 @@ alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias mybins='ps aux | grep -E "$USER.+bin"'
+alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
@@ -85,7 +86,7 @@ alias ds="df -P -kHl"
 alias fs="stat -f \"%z bytes\""
 
 # Misc
-alias reload='source ~/.zshrc && echo "Shell config reloaded from ~/.zshrc"'
+alias reload='source ~/.bash_profile && echo "Shell config reloaded from ~/.bash_profile"'
 
 # SSH
 alias sshdroplet='ssh deploy@192.241.145.243'

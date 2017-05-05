@@ -58,16 +58,13 @@ parse_git_dirty() {
 }
 
 ticket_status () {
-  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]
+  if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
   then
-    if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
-    then
-      issueStatus=/$(getticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
-    else 
-      issueStatus=''
-    fi
-    echo "$issueStatus"
+    issueStatus=/$(getticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
+  else 
+    issueStatus=''
   fi
+  echo "$issueStatus"
 }
 
 PS1="$SPIRIT_ANIMAL ";
