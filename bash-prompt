@@ -37,7 +37,7 @@ parse_git_dirty() {
     bits="> ${bits}"
   fi
   if [ "${ahead}" == "0" ]; then
-    bits="^${bits}"
+    bits="↑${bits}"
   fi
   if [ "${newfile}" == "0" ]; then
     bits="+${bits}"
@@ -49,7 +49,7 @@ parse_git_dirty() {
     bits="x${bits}"
   fi
   if [ "${dirty}" == "0" ]; then
-    bits="•${bits}"
+    bits="● ${bits}"
   fi
   if [ ! "${bits}" == "" ]; then
     echo "$bits"
