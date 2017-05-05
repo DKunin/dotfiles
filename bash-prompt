@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+COLOR_RED="\\[\033[0;91m\]"
+COLOR_YELLOW="\\[\033[0;33m\]"
+COLOR_GREEN="\\[\033[0;32m\]"
+COLOR_OCHRE="\\[\033[38;5;95m\]"
+COLOR_BLUE="\\[\033[0;34m\]"
+COLOR_WHITE="\\[\033[0;97m\]"
+COLOR_RESET="\\[\033[0m\]"
+
+STYLE_DIM="\\[\e[2m\]"
+DIM_RESET="\\[\e[22m\]"
+
+# get current branch in git repo
+parse_git_branch() {
+  BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+  if [ ! "${BRANCH}" == "" ]
+  then
+    echo "${BRANCH}"
+  else
+    echo ""
+  fi
+}
+
+# get current status of git repo
+parse_git_dirty() {
+  status=`git status 2>&1 | tee`
+  dirty=`echo -n "${status}" 2> /dev/null | grep "modified:" &> /dev/null; echo "$?"`
+  untracked=`echo -n "${status}" 2> /dev/null | grep "Untracked files" &> /dev/null; echo "$?"`
+  ahead=`echo -n "${status}" 2> /dev/null | grep "Your branch is ahead of" &> /dev/null; echo "$?"`
+  newfile=`echo -n "${status}" 2> /dev/null | grep "new file:" &> /dev/null; echo "$?"`
+  renamed=`echo -n "${status}" 2> /dev/null | grep "renamed:" &> /dev/null; echo "$?"`
+  deleted=`echo -n "${status}" 2> /dev/null | grep "deleted:" &> /dev/null; echo "$?"`
+  bits=''
+  if [ "${renamed}" == "0" ]; then
+    bits="> ${bits}"
+  fi
+  if [ "${ahead}" == "0" ]; then
+    bits="*${bits}"
+  fi
+  if [ "${newfile}" == "0" ]; then
+    bits="+${bits}"
+  fi
+  if [ "${untracked}" == "0" ]; then
+    bits="?${bits}"
+  fi
+  if [ "${deleted}" == "0" ]; then
+    bits="x${bits}"
+  fi
+  if [ "${dirty}" == "0" ]; then
+    bits="!${bits}"
+  fi
+  if [ ! "${bits}" == "" ]; then
+    echo "$bits"
+  else
+    echo ""
+  fi
+}
+
+ticket_status () {
+  if [[ "$(command git config --get oh-my-zsh.hide-status 2>/dev/null)" != "1" ]]
+  then
+    if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
+    then
+      issueStatus=/$(getticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
+    else 
+      issueStatus=''
+    fi
+    echo "$issueStatus"
+  fi
+}
+
+PS1="$SPIRIT_ANIMAL ";
+PS1+=" $STYLE_DIM\W$DIM_RESET";
+PS1+=" (";
+PS1+="$COLOR_WHITE\$(parse_git_branch)$COLOR_RESET";
+PS1+="$COLOR_WHITE\$(ticket_status)$COLOR_RESET";
+PS1+=") ";
+PS1+="$COLOR_OCHRE\$(parse_git_dirty)$COLOR_RESET ";
+PS1+="";
+
+export PS1;

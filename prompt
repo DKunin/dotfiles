@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-local ret_status="%(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} %s)"
+ret_status="%(?:%{$fg_bold[green]%} :%{$fg_bold[red]%} %s)"
 
 ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg[white]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -31,3 +31,4 @@ min_pwd () {
 }
 
 PROMPT='$(spirit_animal)${ret_status} $(min_pwd) $(ticket_status) %{$reset_color%}'
+PS1='$(spirit_animal)${ret_status} $(min_pwd) $(ticket_status) %{$reset_color%}'

@@ -1,8 +1,8 @@
-source $HOME/.env
-source $ZSH/oh-my-zsh.sh
+export NVM_DIR="$HOME/.nvm"
 
+source $HOME/.env
 source $HOME/.aliases
 source $HOME/.functions
-source $HOME/.prompt
+source $HOME/.bash-prompt
 source $HOME/.localenv
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
