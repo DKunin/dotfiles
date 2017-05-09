@@ -23,6 +23,7 @@ alias mv='mv -v'
 alias rm='rm -i -v'
 alias cp='cp -v'
 alias latest='ls -halt | head'
+alias mostused='cut -d " " -f1 ~/.bash_history | sort | uniq -c | sort -nr | head -10'
 
 # Requires specific structure
 alias code='cd $PROJECTS'
