@@ -50,7 +50,8 @@
             );
             if (lineNumber) {
                 lineNumber = lineNumber.dataset.lineNumber;
-            } else {
+            }
+            else {
                 lineNumber = event.target.innerText;
             }
             var path = file.querySelector('.breadcrumbs').innerText;

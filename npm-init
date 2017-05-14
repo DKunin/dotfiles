@@ -4,19 +4,23 @@
 const cp = require('child_process');
 const USER = process.env.GITHUB_USERNAME || 'dkunin';
 let priv;
+let basename;
 
 module.exports = {
     name: prompt('name', basename),
 
     version: '0.0.1',
 
-    private: prompt('private', 'false', function(val) {
-        return (priv = typeof val === 'boolean' ? val : !!val.match('true'));
+    'private': prompt('private', 'false', function(val) {
+        return (priv = typeof val === 'boolean'
+            ? val
+            : Boolean(val.match('true')));
     }),
 
     create: prompt('create github repo', 'no', function(val) {
         if (val.indexOf('y') !== -1) {
             cp.execSync('git init');
+            // eslint-disable-next-line
             console.log('enter github password:');
             cp.execSync(
                 `curl -u "${USER}" https://api.github.com/user/repos -d '{"name": "${basename}", "private": "${priv ? true : false}"}'`

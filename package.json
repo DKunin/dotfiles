@@ -13,6 +13,7 @@
   "scripts": {
     "test": "echo test",
     "start": "node ./",
+    "pretty": "prettier ./npm-init --single-quote --tab-width 4 --write",
     "dev": "node ./",
     "build": "NODE_ENV=production node ./"
   },
@@ -21,7 +22,6 @@
   "license": "MIT",
   "description": "# bitplugins - days : Display number of days, since you were born - dirty : Get dirty projects (not staged, or non commited) - prs : Pull requests list - user : Wakatime info - week : Displays current week number",
   "dependencies": {
-    "@avito/eslint-config-react": "2.1.0",
     "eslint": "3.19.0"
   }
 }
