@@ -38,6 +38,7 @@ alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
 alias gp="git pull"
+alias gpu="git push"
 alias gmm="git fetch && git merge origin/master"
 alias gsc="git diff --name-only --diff-filter=U"
 alias gfm="gmm ; gsc; gulp build ; mur"
