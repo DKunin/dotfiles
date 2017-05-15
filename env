@@ -7,7 +7,8 @@ export LC_TYPE=ru_RU.UTF-8
 
 export NODE_BIN_PATH="$HOME/.nvm/versions/node/v7.0.0/bin"
 export NODE_PATH="$NODE_BIN_PATH/node"
-export PATH="$NODE_PATH:$NODE_BIN_PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:/opt/local/bin"
+export HOME_BREW_PATH="/usr/local/sbin"
+export PATH="$HOME_BREW_PATH:$NODE_PATH:$NODE_BIN_PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:/opt/local/bin"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
 export BINFILES="$PROJECTS/bin"
