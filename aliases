@@ -33,7 +33,8 @@ alias dt='cd ~/Desktop'
 alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias mybins='ps aux | grep -E "$USER.+bin"'
-alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ./'
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
