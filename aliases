@@ -52,7 +52,6 @@ alias gom="git co master"
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ci='git add . && prepci'
 alias mur='ci Merged with master, rebuild'
-alias webdev='t list timeline dkunin/webdev -l -r -n 35'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
 alias tweet='t update'
 alias pretty='prettier --single-quote --tab-width 4 --write'
