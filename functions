@@ -107,7 +107,7 @@ function progressBar() {
 }
 
 function smaller() {
-   ffmpeg -i $1 -vf scale=640:480 $1-small.mp4
+  ffmpeg -i $1 -filter:v scale=480:-1 -c:a copy small-$1
 }
 
 function base64() {
