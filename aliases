@@ -47,7 +47,7 @@ alias gop="git-open"
 alias gqs="git-quick-stats"
 alias grc="git add . && git rebase --continue"
 alias gom="git co master"
-
+alias gtoday="git log --since=00:00:00 --all --no-merges --oneline --author=$(git config --get user.email)"
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ci='git add . && prepci'
