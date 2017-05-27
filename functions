@@ -152,6 +152,10 @@ function man() {
 	curl cheat.sh/$1
 }
 
+function fork() {
+	"${@}" > /dev/null 2>&1 & disown
+}
+
 # function slackStatus() {
 #   curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
 # }
