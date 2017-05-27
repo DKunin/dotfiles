@@ -48,8 +48,10 @@ alias gqs="git-quick-stats"
 alias grc="git add . && git rebase --continue"
 alias gom="git co master"
 alias gtoday="git log --since=00:00:00 --all --no-merges --oneline --author=$(git config --get user.email)"
+
 # Specific soft needs to be installed
-alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
+alias sb='git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads | ipt | xargs git co'
+# alias sb='git for-each-ref --sort=-committerdate refs/heads/ | cut -d'/' -f 3 | ipt | xargs git co'
 alias ci='git add . && prepci'
 alias mur='ci Merged with master, rebuild'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
