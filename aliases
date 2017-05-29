@@ -48,7 +48,7 @@ alias gqs="git-quick-stats"
 alias grc="git add . && git rebase --continue"
 alias gom="git co master"
 alias gtoday="git log --since=00:00:00 --all --no-merges --oneline --author=$(git config --get user.email)"
-alias cii="git add . && echo git ci -m 'Changed: ' + $(git diff --name-only --cached -r)' && echo git push"
+alias cii="git add . && git ci -m 'Changed: '$(git diff --name-only --cached -r)' && git push"
 
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort="-authordate:iso8601" --format=" %(authordate:relative)%09%(refname:short)" refs/heads | ipt | cut -f2 | xargs git co'
