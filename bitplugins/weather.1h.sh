@@ -21,7 +21,7 @@ https
 
         response.on('end', function() {
             const result = JSON.parse(str);
-            console.log(`${result.currently.temperature}°C`);
+			console.log(`${result.currently.temperature.toFixed()}°C`);
             console.log('---');
             console.log(`${result.currently.summary}`);
             console.log(`Скорость ветра: ${result.currently.windSpeed}`);
