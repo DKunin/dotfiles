@@ -35,7 +35,7 @@ alias dot='cd $DOTFILES'
 alias mybins='ps aux | grep -E "$USER.+bin"'
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ./'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias gw='cat $PROJECTS/nindo/goals/weekly.md'
+alias gw='cat $PROJECTS/nindo/goals/weekly.md \n'
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
