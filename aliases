@@ -64,6 +64,7 @@ alias comparegrep='comparemaster | xargs grep -n -e'
 alias cme='$DOTFILES/hooks/pre-commit'
 alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"
 alias hermitageRadio="mplayer http://91.190.127.185:8000/live_test"
+alias nib="benny-hill-x 8 npm install"
 
 # Slack statuses aliases
 alias ssw='slack-status "working" ":metal:"'
