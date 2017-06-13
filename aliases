@@ -35,6 +35,7 @@ alias dot='cd $DOTFILES'
 alias mybins='ps aux | grep -E "$USER.+bin"'
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ./'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+alias gw='cat $PROJECTS/nindo/goals/weekly.md'
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
@@ -48,6 +49,7 @@ alias gqs="git-quick-stats"
 alias grc="git add . && git rebase --continue"
 alias gom="git co master"
 alias gtoday="git log --since=00:00:00 --all --no-merges --oneline --author=$(git config --get user.email)"
+alias g-="git co -"
 # alias cii="git add . && git ci -m 'Changed: '$(git diff --name-only --cached -r)'' && git push"
 
 # Specific soft needs to be installed
