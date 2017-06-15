@@ -35,7 +35,7 @@ alias dot='cd $DOTFILES'
 alias mybins='ps aux | grep -E "$USER.+bin"'
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ./'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias gw='cat $PROJECTS/nindo/goals/weekly.md \n'
+alias gw='cat $PROJECTS/nindo/goals/weekly.md'
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
@@ -63,7 +63,6 @@ alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
 alias comparegrep='comparemaster | xargs grep -n -e'
 alias cme='$DOTFILES/hooks/pre-commit'
 alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"
-alias hermitageRadio="mplayer http://91.190.127.185:8000/live_test"
 alias nib="benny-hill-x 8 npm install"
 
 # Slack statuses aliases
