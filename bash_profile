@@ -12,3 +12,14 @@ source $HOME/.bash-prompt
 source /usr/local/etc/bash_completion.d/pass
 HISTSIZE= HISTFILESIZE=
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
+
+# Some shells let us configure their window title. Take advantage of that to
+# display the current working directory. Remote (ssh) shels also include the
+# hostname.
+if [[ $TERM == "xterm"* ]]; then
+    if [ -n "$SSH_CONNECTION" ]; then
+        PS1="\[\e]0;\h:\w\a\]$PS1"
+    else
+        PS1="\[\e]0;\w\a\]$PS1"
+    fi
+fi

@@ -66,6 +66,10 @@ alias cme='$DOTFILES/hooks/pre-commit'
 alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"
 alias nib="benny-hill-x 8 npm install"
 
+# GPG
+alias gpglk='gpg --list-keys';
+alias gpgek='gpg --edit-key';
+
 # Slack statuses aliases
 alias ssw='slack-status "working" ":metal:"'
 alias sse='slack-status "running an errand, be right back" ":slon_run:"'

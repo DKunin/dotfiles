@@ -16,3 +16,4 @@ export SPIRIT_ANIMAL=🐙
 export ANDROID_HOME="/usr/local/opt/android-sdk"
 export VIDEOS_FOLDER="$PROJECTS/watchlater-downloads/public/videos"
 export CDPATH='$HOME/Projects'
+export EDITOR=vim
