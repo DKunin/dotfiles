@@ -156,6 +156,10 @@ function fork() {
 	"${@}" > /dev/null 2>&1 & disown
 }
 
+function wr() {
+	webread $1 | fold -w 80
+}
+
 # function slackStatus() {
 #   curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
 # }
