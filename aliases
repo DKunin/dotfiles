@@ -65,6 +65,7 @@ alias comparegrep='comparemaster | xargs grep -n -e'
 alias cme='$DOTFILES/hooks/pre-commit'
 alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.gz ./alfred-settings"
 alias nib="benny-hill-x 8 npm install"
+alias pa="find ~/.password-store/ -name '*.gpg' | cut -d'/' -f6-$2 | sed 's/.gpg//g' | ipt | xargs pass -c"
 
 # GPG
 alias gpglk='gpg --list-keys';
