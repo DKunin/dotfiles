@@ -23,7 +23,6 @@ set notimeout ttimeout ttimeoutlen=200
 
 set shiftwidth=4
 set tabstop=4
-
 set columns=80
 
 map Y y$
