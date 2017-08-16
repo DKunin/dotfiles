@@ -67,7 +67,7 @@ alias alfred-backup="tar -zcvf Yandex.Disk.localized/backup/alfredsettings.tar.g
 alias nib="benny-hill-x 8 npm install"
 alias dsc="comparemaster | while read i; do echo $i && cat $i | extract-text > ~/temp/checkthis && yasp ~/temp/checkthis && rm -rf ~/temp/checkthis; done"
 alias vif='vi $(fzf)'
-# alias twiglint='/Users/dikunin/Projects/twiglinter/index.js'
+alias twiglint='/Users/dikunin/Projects/twiglinter/index.js'
 
 # GPG
 alias gpglk='gpg --list-keys';
