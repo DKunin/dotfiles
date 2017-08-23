@@ -145,3 +145,8 @@ function wr() {
 # function slackStatus() {
 #   curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
 # }
+
+
+function uploadVideo() {
+	scp $1 root@$KUNINS_BLOG_IP:/var/www/html/wp-content/uploads/$(date +'%Y/%m')
+}
