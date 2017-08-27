@@ -1,12 +1,12 @@
-# Path to your oh-my-zsh installation.
+#!/bin/bash
 
 export LANGUAGE=ru_RU.UTF-8
 export LC_ALL=ru_RU.UTF-8
 export LANG=ru_RU.UTF-8
 export LC_TYPE=ru_RU.UTF-8
 
-export NODE_BIN_PATH="$HOME/.nvm/versions/node/v7.0.0/bin"
-export NODE_PATH="$NODE_BIN_PATH/node"
+# export NODE_BIN_PATH="$HOME/.nvm/versions/node/v7.0.0/bin"
+# export NODE_PATH="$NODE_BIN_PATH/node"
 export HOME_BREW_PATH="/usr/local/sbin"
 export PATH="$HOME_BREW_PATH:$NODE_PATH:$NODE_BIN_PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:/opt/local/bin"
 export PROJECTS="$HOME/Projects"
@@ -14,6 +14,5 @@ export DOTFILES="$PROJECTS/dotfiles"
 export BINFILES="$PROJECTS/bin"
 export SPIRIT_ANIMAL=🐙
 export ANDROID_HOME="/usr/local/opt/android-sdk"
-export VIDEOS_FOLDER="$PROJECTS/watchlater-downloads/public/videos"
 export CDPATH='$HOME/Projects'
 export EDITOR=vim
