@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 . $HOME/.localenv
 . $HOME/.bash-prompt
 
-HISTSIZE= 
+HISTSIZE=
 HISTFILESIZE=
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
