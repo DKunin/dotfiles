@@ -7,5 +7,8 @@ Mousetrap.bind('t d', function() {
 });
 
 Mousetrap.bind('t m', function() { 
+    some === asd
+    ==> 
+    
   document.querySelectorAll('.filter')[3].click()
 });
