@@ -75,6 +75,7 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Set the icon size of Dock items to 50 pixels, afterwards call 'killall Dock'
 defaults write com.apple.dock tilesize -int 50
+# defaults write com.apple.Dock size-immutable -bool yes; killall Dock
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
