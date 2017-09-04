@@ -73,8 +73,8 @@ defaults write com.apple.dock dashboard-in-overlay -bool true
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-# Set the icon size of Dock items to 45 pixels
-defaults write com.apple.dock tilesize -int 45
+# Set the icon size of Dock items to 50 pixels, afterwards call 'killall Dock'
+defaults write com.apple.dock tilesize -int 50
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
