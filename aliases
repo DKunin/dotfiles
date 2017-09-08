@@ -98,6 +98,7 @@ alias docker-deamon='eval $(minikube docker-env)'
 
 # Disc utils
 alias ds="df -P -kHl"
+alias disk-space="ds"
 
 # File size
 alias fs="stat -f \"%z bytes\""
