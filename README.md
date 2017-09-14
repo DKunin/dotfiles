@@ -15,6 +15,7 @@
 - Snippets: snippets for sublime stuff, to link:
 ```console
 ln -s $DOTFILES/sublime/snippets /Users/USER/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
+ln -s $DOTFILES/sublime/SETTINGS_FILE /Users/USER/Library/Application\ Support/Sublime\ Text\ 3/Packages/User
 
 ```
 
@@ -38,3 +39,4 @@ npm config set init-module ~/.npm-init.js
 - vimrc - vim configuration file
 - zprofile - profile for zsh
 - zshrc - zsh configuration
+

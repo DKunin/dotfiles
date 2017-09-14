@@ -1,0 +1,13 @@
+{
+    "prettier_cli_path": "/Users/dikunin/.nvm/versions/node/v8.4.0/bin/prettier",
+    "prettier_options": {
+        "printWidth": 80,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "trailingComma": "none",
+        "bracketSpacing": true,
+        "jsxBracketSameLine": false,
+        "parser": "babylon",
+        "semi": true
+    }
+}
