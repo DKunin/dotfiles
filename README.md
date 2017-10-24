@@ -40,3 +40,15 @@ npm config set init-module ~/.npm-init.js
 - zprofile - profile for zsh
 - zshrc - zsh configuration
 
+# completion file location
+
+## Darwin
+```
+    /usr/local/etc/bash_completion.d/
+```
+
+## Linux
+```
+    /etc/bash_completion.d/
+```
+
