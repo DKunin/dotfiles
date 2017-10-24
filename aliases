@@ -97,6 +97,7 @@ alias docker-deamon='eval $(minikube docker-env)'
 #K8s
 alias kdp='kubectl delete po'
 alias kp='kubectl get po'
+alias kka='kp | grep avito-site | cut -d" " -f1 | xargs kubectl delete pod'
 
 # Disc utils
 alias ds="df -P -kHl"
