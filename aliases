@@ -94,6 +94,10 @@ alias dbi='docker build -t'
 alias di='docker images | grep -v gcr'
 alias docker-deamon='eval $(minikube docker-env)'
 
+#K8s
+alias kdp='kubectl delete po'
+alias kp='kubectl get po'
+
 # Disc utils
 alias ds="df -P -kHl"
 alias disk-space="ds"
