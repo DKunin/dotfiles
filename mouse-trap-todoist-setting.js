@@ -1,3 +1,5 @@
+'use strict';
+
 Mousetrap.bind('i n', function() {
     document.querySelectorAll('.filter')[0].click();
 });
@@ -10,7 +12,7 @@ Mousetrap.bind('t m', function() {
     document.querySelectorAll('.filter')[3].click();
 });
 
-Mousetrap.bind('a t', function() {
+Mousetrap.bind('v t', function() {
     const AvitoToday = Array.from(
         document.querySelectorAll('#filters_list li')
     ).find(function(singleItem) {
