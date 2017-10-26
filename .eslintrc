@@ -147,7 +147,9 @@
             }
         ]
     },
-    "globals": {},
+    "globals": {
+        "Mousetrap": true
+    },
     "env": {
         "browser": true,
         "es6": true,
