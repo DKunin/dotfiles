@@ -61,7 +61,7 @@ parse_git_dirty() {
 ticket_status () {
   if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
   then
-    issueStatus=/$(getticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
+    issueStatus=/$(get-ticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
   else 
     issueStatus=''
   fi
