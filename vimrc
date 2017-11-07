@@ -1,7 +1,14 @@
 set nocompatible
 filetype indent plugin on
 syntax on
- 
+
+call plug#begin('~/.vim/plugged')
+Plug 'josudoey/vim-eslint-fix'
+Plug 'vim-syntastic/syntastic'
+call plug#end()
+
+let g:syntastic_javascript_checkers=['eslint']
+
 set hidden
 set wildmenu
 set showcmd
