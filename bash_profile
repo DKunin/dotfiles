@@ -4,6 +4,7 @@
 [ -f ~/.bash.d/cheat.sh ] && . ~/.bash.d/cheat.sh
 [ -f ~/.fzf.bash ] && . ~/.fzf.bash
 [ -f /usr/local/etc/bash_completion.d/pass ] && . /usr/local/etc/bash_completion.d/pass
+[ -f $DOTFILES/completions/adb ] && . $DOTFILES/completions/adb
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
