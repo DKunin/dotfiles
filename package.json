@@ -7,11 +7,14 @@
     "type": "git",
     "url": "git://github.com/dkunin/dotfiles.git"
   },
+  "config": {
+  	"port": 8080
+  },
   "bugs": {
     "url": "https://github.com/dkunin/dotfiles/issues"
   },
   "scripts": {
-    "test": "echo test",
+    "test": "echo $npm_package_config_port",
     "start": "node ./",
     "pretty": "prettier ./npm-init --single-quote --tab-width 4 --write",
     "dev": "node ./",
