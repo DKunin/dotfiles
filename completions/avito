@@ -14,4 +14,4 @@ _avito()
     fi
 }
 
-complete -F _avito avito
+complete -o default -F _avito avito

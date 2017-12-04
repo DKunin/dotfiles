@@ -14,4 +14,4 @@ _adb()
     fi
 }
 
-complete -F _adb adb
+complete -o default -F _adb adb
