@@ -160,3 +160,13 @@ function wr() {
 function uploadVideo() {
 	scp $1 root@$KUNINS_BLOG_IP:/var/www/html/wp-content/uploads/$(date +'%Y/%m')
 }
+
+del_stopped(){
+	local name=$1
+	local state
+	state=$(docker inspect --format "{{.State.Running}}" "$name" 2>/dev/null)
+
+	if [[ "$state" == "false" ]]; then
+		docker rm "$name"
+	fi
+}
