@@ -88,7 +88,7 @@ alias vha='vagrant halt'
 # Docker
 alias dr='docker run'
 alias dri='docker run --rm -it'
-alias dp='docker ps -a|grep -v gcr'
+alias dp='docker ps -a --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Image}}"'
 alias drm='docker rm'
 alias dbi='docker build -t'
 alias di='docker images | grep -v gcr'
