@@ -92,6 +92,7 @@ alias dp='docker ps -a --format "table {{.ID}}\t{{.Status}}\t{{.Names}}\t{{.Imag
 alias drm='docker rm'
 alias dbi='docker build -t'
 alias di='docker images | grep -v gcr'
+alias dcu='docker-compose up -d --build'
 
 #K8s
 alias kdp='kubectl delete po'
