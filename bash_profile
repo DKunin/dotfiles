@@ -20,3 +20,6 @@ HISTFILESIZE=
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 
 nvm use default
+
+# Don't check mail when opening terminal.
+unset MAILCHECK
