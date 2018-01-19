@@ -35,7 +35,7 @@ module.exports = {
     scaffold: prompt('Add scaffold files', 'no', function(val) {
         if (val.indexOf('y') !== -1) {
             cp.execSync(
-                'getconfig eslintrc && getreadme && echo node_modules >> .gitignore && :> .npmrc'
+                'get-config eslintrc && getreadme && echo node_modules >> .gitignore && :> .npmrc'
             );
         }
 
