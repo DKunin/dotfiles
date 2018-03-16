@@ -28,7 +28,7 @@
     br = branch
     co = checkout
 [credential]
-    helper = osxkeychain
+    helper = credential-osxkeychain
 [push]
     default = simple
 [pretty]
