@@ -30,13 +30,11 @@ alias code='cd $PROJECTS'
 alias know='cd $PROJECTS/knowledge'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
-alias mu='cd ~/Music'
 alias dot='cd $DOTFILES'
 alias mybins='ps aux | grep -E "$USER.+bin"'
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ./'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias gw='cat $PROJECTS/nindo/goals/weekly.md'
-alias addweekgoal='vim +  $PROJECTS/nindo/goals/weekly.md'
+alias wa='cd $PROJECTS/work-agenda' 
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"
