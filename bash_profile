@@ -14,6 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 . $HOME/.functions
 . $HOME/.localenv
 . $HOME/.bash-prompt
+. $HOME/.profile
 
 HISTSIZE=
 HISTFILESIZE=
@@ -23,3 +24,4 @@ nvm use default
 
 # Don't check mail when opening terminal.
 unset MAILCHECK
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
