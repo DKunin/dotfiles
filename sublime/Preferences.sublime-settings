@@ -8,7 +8,7 @@
 		".idea",
 		"node_modules"
 	],
-	"font_face": "Hack",
+	"font_face": "Fira Code",
 	"font_options":
 	[
 		"gray_antialias"
