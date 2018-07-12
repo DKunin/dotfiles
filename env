@@ -7,7 +7,7 @@ export LC_TYPE=ru_RU.UTF-8
 
 export HOME_BREW_PATH="/usr/local/sbin"
 export NODE_PATH="$HOME/.nvm/versions/node/v8.9.0/bin/node"
-export ANDROID_HOME="e/Library/Android/sdk/platform-tools"
+export ANDROID_HOME="$HOME/Library/Android/sdk/platform-tools"
 export PATH="$ANDROID_HOME:$HOME_BREW_PATH:$NODE_PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:/opt/local/bin"
 export PROJECTS="$HOME/Projects"
 export DOTFILES="$PROJECTS/dotfiles"
