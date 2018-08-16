@@ -107,6 +107,3 @@ alias fs="stat -f \"%z bytes\""
 # Misc
 alias reload='source ~/.bash_profile && echo "Shell config reloaded from ~/.bash_profile"'
 alias nginx-config='vim /usr/local/etc/nginx/nginx.conf'
-
-# SSH
-alias sshdroplet='ssh deploy@192.241.145.243'
