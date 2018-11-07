@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/Users/dikunin/.nvm/versions/node/v10.12.0/bin/node
 
 // Wakatime
 // BitBar plugin
