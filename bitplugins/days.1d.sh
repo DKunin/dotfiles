@@ -10,4 +10,3 @@ var minutes = seconds / 60;
 var hours = minutes / 60;
 var days = Math.ceil(hours / 24);
 console.log(days);
-console.log('---');
