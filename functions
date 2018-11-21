@@ -114,14 +114,6 @@ function clean() {
 	fi
 }
 
-function sideBySide() {
-	montage $1 -tile 2x1 -geometry +0+0 $2
-}
-
-function tp() {
-	tinypng $1 -k $TINY_PNG_KEY
-}
-
 function base64decode() {
 	python -m base64 -d $1
 }
@@ -149,10 +141,6 @@ function fork() {
 	disown
 }
 
-function wr() {
-	webread $1 | fold -w 80
-}
-
 # function slackStatus() {
 #   curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
 # }
@@ -161,7 +149,7 @@ function uploadVideo() {
 	scp $1 root@$KUNINS_BLOG_IP:/var/www/html/wp-content/uploads/$(date +'%Y/%m')
 }
 
-del-stopped (){
+function del-stopped (){
 	local name=$1
 	local state
 	state=$(docker inspect --format "{{.State.Running}}" "$name" 2>/dev/null)
@@ -170,3 +158,9 @@ del-stopped (){
 		docker rm "$name"
 	fi
 }
+
+function pass () {
+	docker exec -it 6c91810513e1 pass $1 | pbcopy &&
+	echo 'In the clipboard'
+}
+

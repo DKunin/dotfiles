@@ -8,7 +8,7 @@
     "url": "git://github.com/dkunin/dotfiles.git"
   },
   "config": {
-  	"port": 8080
+    "port": 8080
   },
   "bugs": {
     "url": "https://github.com/dkunin/dotfiles/issues"

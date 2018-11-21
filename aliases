@@ -54,7 +54,6 @@ alias sb='git for-each-ref --sort="-authordate:iso8601" --format=" %(authordate:
 alias ci='git add . && node-prepci'
 alias mur='ci Merged with master, rebuild'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
-alias tweet='t update'
 alias pretty='prettier --single-quote --tab-width 4 --write'
 alias svgoall='comparemaster | grep svg | while read i; do svgo $i; done'
 alias comparegrep='comparemaster | xargs grep -n -e'
@@ -75,13 +74,6 @@ alias sse='slack-status "running an errand, be right back" ":slon_run:"'
 alias ssm='slack-status "at a meeting" ":calendar:"'
 alias ssa='slack-status "afr" ":rat:"'
 alias ssl='slack-status "lunch" ":bento:"'
-
-# Vagrant aliases
-alias v='vagrant'
-alias vup='vagrant up'
-alias vde='vagrant destroy'
-alias vss='vagrant ssh'
-alias vha='vagrant halt'
 
 # Docker
 alias dr='docker run'
@@ -109,4 +101,4 @@ alias reload='source ~/.bash_profile && echo "Shell config reloaded from ~/.bash
 alias nginx-config='vim /usr/local/etc/nginx/nginx.conf'
 
 
-alias pass='docker exec -it 6c91810513e1 pass'
+alias passv='docker exec -it 6c91810513e1 pass'
