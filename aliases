@@ -102,3 +102,4 @@ alias nginx-config='vim /usr/local/etc/nginx/nginx.conf'
 
 
 alias passv='docker exec -it 6c91810513e1 pass'
+alias passedit='docker exec -it 6c91810513e1 bash'
