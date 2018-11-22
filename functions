@@ -159,8 +159,8 @@ function del-stopped (){
 	fi
 }
 
-function pass () {
-	docker exec -it 6c91810513e1 pass $1 | pbcopy &&
-	echo 'In the clipboard'
-}
+# function pass () {
+# 	docker exec -it 6c91810513e1 pass $1 | pbcopy &&
+# 	echo 'In the clipboard'
+# }
 
