@@ -100,6 +100,5 @@ alias fs="stat -f \"%z bytes\""
 alias reload='source ~/.bash_profile && echo "Shell config reloaded from ~/.bash_profile"'
 alias nginx-config='vim /usr/local/etc/nginx/nginx.conf'
 
-
 alias pass='docker exec -it 6c91810513e1 pass'
 alias passedit='docker exec -it 6c91810513e1 bash'
