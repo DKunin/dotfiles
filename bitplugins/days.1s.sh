@@ -69,7 +69,7 @@ def read_data_file(filename):
 def write_data_file(filename, t, task=None):
     with open(data_file, 'wt') as f:
         f.write('{:f}{}{}'.format(t, '\n' if task else '', task or ''))
-§
+
 def usage():
     print('''usage: {0} <time> [task_name]
 time can be:
