@@ -96,6 +96,7 @@ if len(sys.argv) == 1:
     else:
         entry('|templateImage=\'%s\'' % icon)
     entry('---')
+    entry('10 min to comm', bash=__file__, param1='set-10', terminal='false')
     if os.path.isfile(data_file):
         entry('Cancel timer', bash=__file__, param1='cancel', terminal='false')
     else:
@@ -107,3 +108,6 @@ elif len(sys.argv) == 2 and sys.argv[1] == 'set':
     write_data_file(data_file, t, task)
 elif len(sys.argv) == 2 and sys.argv[1] == 'cancel':
     os.remove(data_file)
+elif len(sys.argv) == 2 and sys.argv[1] == 'set-10':
+    t = time.time() + parse_time('10m')
+    write_data_file(data_file, t, 'comm')
