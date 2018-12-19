@@ -102,7 +102,7 @@ if len(sys.argv) == 1:
     else:
         entry('Set timer...', bash=__file__, param1='set', terminal='false')
 elif len(sys.argv) == 2 and sys.argv[1] == 'set':
-    timestr = prompt('Input time (example: 30s, 15m, 1h, 1m30s)', '5m', 'note', ('Cancel','Set'), 1)
+    timestr = prompt('Input time (example: 30s, 15m, 1h, 1m30s)', '15m', 'note', ('Cancel','Set'), 1)
     task = prompt('Input task name')
     t = time.time() + parse_time(timestr)
     write_data_file(data_file, t, task)
