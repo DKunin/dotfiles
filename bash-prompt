@@ -59,13 +59,14 @@ parse_git_dirty() {
 }
 
 ticket_status () {
-  if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
-  then
-    issueStatus=/$(get-ticket;getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
-  else 
-    issueStatus=''
-  fi
-  echo "$issueStatus"
+  # if [[ $(pwd) == *"avito"* ]] && [[ $(git symbolic-ref HEAD) != *"master"* ]]
+  # then
+  #   issueStatus=/$(getprop '/tmp/jira-current-status' 'fields.status.name' | tr '[:upper:]' '[:lower:]')
+  # else 
+  #   issueStatus=''
+  # fi
+  # echo "$issueStatus"
+  echo ""
 }
 
 ifgitSymbol() {
