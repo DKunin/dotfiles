@@ -6,4 +6,4 @@
 # by Dkunin
 #
 # Displays one virtue for the week
-echo "Умеренность"
+echo "Спокойствие"
