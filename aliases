@@ -52,6 +52,7 @@ alias g-="git co -"
 # Specific soft needs to be installed
 alias sb='git for-each-ref --sort="-authordate:iso8601" --format=" %(authordate:relative)%09%(refname:short)" refs/heads | ipt --unquoted | cut -f2 | xargs git co'
 alias ci='git add . && node-prepci'
+alias cit='ci TNS-001-update'
 alias mur='ci Merged with master, rebuild'
 alias ydl='youtube-dl -f "bestvideo[height<=480,ext=mp4]+bestaudio[ext=m4a]/best[height<=480]"'
 alias pretty='prettier --single-quote --tab-width 4 --write'
