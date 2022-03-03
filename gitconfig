@@ -1,6 +1,6 @@
 [user]
     name = Dmitriy Kunin
-    email = info@dkunin.ru
+    email = dkunin@avito.ru
 [github]
     user = dkunin
 [color]
@@ -41,3 +41,8 @@
 [help]
     # Correct typos
     autocorrect = 1
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
