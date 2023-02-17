@@ -35,6 +35,7 @@ alias mybins='ps aux | grep -E "$USER.+bin"'
 alias stt='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl ./'
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 alias wa='cd $PROJECTS/work-agenda' 
+alias follow='cd $PROJECTS/koba/scripts' 
 
 # Git aliases
 alias gclean="git branch --merged | grep -v \"\*\" | xargs -n 1 git branch -d"

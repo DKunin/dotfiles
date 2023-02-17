@@ -30,7 +30,8 @@ function installcask() {
 }
 
 function movtomp4() {
-	ffmpeg -i $1 -vcodec h264 -acodec aac -strict -2 $2
+	# name=${echo $1 | cut -d "." -f 1}
+	ffmpeg -i $1 -vcodec h264 -acodec aac -strict -2 "$1.mp4"
 }
 
 function addlocalvar() {
@@ -98,6 +99,10 @@ transfer() {
 	rm -f $tmpfile
 }
 
+function smallerImage() {
+	ffmpeg -i $1 -vf scale=1024:-1 small-$1
+}
+
 function smaller() {
 	ffmpeg -i $1 -filter:v scale=480:-1 -c:a copy small-$1
 }
@@ -157,6 +162,10 @@ function del-stopped (){
 	if [[ "$state" == "false" ]]; then
 		docker rm "$name"
 	fi
+}
+
+function mingetpod () {
+	 minikube kubectl -- logs $1 -c worker
 }
 
 # function pass () {
