@@ -15,6 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 . $HOME/.localenv
 . $HOME/.bash-prompt
 . $HOME/.profile
+export PATH=${PATH}:/usr/bin/python3
 
 HISTSIZE=
 HISTFILESIZE=
@@ -25,3 +26,4 @@ nvm use default
 # Don't check mail when opening terminal.
 unset MAILCHECK
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export PATH="/usr/local/opt/go@1.19/bin:$PATH"
