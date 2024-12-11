@@ -180,6 +180,12 @@ function ghostmaster() {
 	wine /Users/dkunin/.wine/drive_c/GOG\ Games/Ghost\ Master/ghost.exe
 }
 
+function undertale() {
+	wine "/Users/dkunin/.wine/drive_c/Program Files (x86)/Undertale2/UNDERTALE.exe"
+}
+
+
+
 # function pass () {
 # 	docker exec -it 6c91810513e1 pass $1 | pbcopy &&
 # 	echo 'In the clipboard'

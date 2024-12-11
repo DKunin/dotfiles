@@ -101,3 +101,4 @@ alias fs="stat -f \"%z bytes\""
 # Misc
 alias reload='source ~/.bash_profile && echo "Shell config reloaded from ~/.bash_profile"'
 alias nginx-config='vim /usr/local/etc/nginx/nginx.conf'
+alias conf='/Users/dkunin/Projects/conf-plugin/conf'
