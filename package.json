@@ -26,6 +26,8 @@
   "description": "# bitplugins - days : Display number of days, since you were born - dirty : Get dirty projects (not staged, or non commited) - prs : Pull requests list - user : Wakatime info - week : Displays current week number",
   "dependencies": {
     "eslint": "3.19.0",
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.8",
     "request": "^2.88.2"
   }
 }
