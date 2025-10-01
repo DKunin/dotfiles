@@ -13,7 +13,7 @@ const BoardMixApp = {
   }),
 };
 
-module.exports = {
+export default {
   defaultBrowser: "Google Chrome",
   options: {
     hideIcon: false,
@@ -23,7 +23,7 @@ module.exports = {
   rewrite: [
     {
       // Redirect all urls to use https
-      match: finicky.matchDomains(/.*\.ktalk.ru/),
+      match: finicky.matchHostnames(/.*\.ktalk.ru/),
       url: ({ url }) => {
         return "http://127.0.0.1:44258/ktalk/app/open-url?url=" + url;
       },
@@ -62,19 +62,26 @@ module.exports = {
       },
     },
     {
-      match: finicky.matchDomains(["google.com"]),
+      match: finicky.matchHostnames(["google.com"]),
       url: "https://duckduckgo.com",
     },
   ],
   handlers: [
     {
       match: [
-        finicky.matchDomains(/gitlab.senseai.pro/g),
-        finicky.matchDomains(/console.yandex.cloud/g),
-        finicky.matchDomains(/bot.senseai.pro/g),
+        finicky.matchHostnames(/gitlab.senseai.pro/g),
+        finicky.matchHostnames(/console.yandex.cloud/g),
+        finicky.matchHostnames(/bot.senseai.pro/g),
       ],
       // Forward to Brave
       browser: "Brave Browser",
+    },
+    {
+      match: [
+        finicky.matchHostnames(/mt.avito.ru/g),
+      ],
+      // Forward to Chrome
+      browser: "Google Chrome",
     },
   ],
   // handlers: [
