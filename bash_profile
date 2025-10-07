@@ -15,7 +15,7 @@ export NVM_DIR="$HOME/.nvm"
 . $HOME/.localenv
 . $HOME/.bash-prompt
 . $HOME/.profile
-export PATH=${PATH}:/usr/bin/python3
+# export PATH=${PATH}:/usr/bin/python3
 
 HISTSIZE=
 HISTFILESIZE=
@@ -26,7 +26,7 @@ nvm use default
 # Don't check mail when opening terminal.
 unset MAILCHECK
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-export PATH="/usr/local/opt/go@1.19/bin:$PATH"
+# export PATH="/usr/local/opt/go@1.19/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -48,7 +48,7 @@ unset __conda_setup
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-. "$HOME/.local/bin/env"
+# . "$HOME/.local/bin/env"
 
 # The next line updates PATH for CLI.
 if [ -f '/Users/dkunin/yandex-cloud/path.bash.inc' ]; then source '/Users/dkunin/yandex-cloud/path.bash.inc'; fi
@@ -56,3 +56,12 @@ if [ -f '/Users/dkunin/yandex-cloud/path.bash.inc' ]; then source '/Users/dkunin
 # The next line enables shell command completion for yc.
 if [ -f '/Users/dkunin/yandex-cloud/completion.bash.inc' ]; then source '/Users/dkunin/yandex-cloud/completion.bash.inc'; fi
 
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH="/opt/homebrew/opt/go@1.21/bin:$PATH"
+alias stt="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
