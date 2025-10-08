@@ -46,3 +46,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 alias stt="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 export PATH="$HOME/go/bin:$PATH"
+
+export PATH="$(brew --prefix openjdk)/bin:$PATH"
+export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
