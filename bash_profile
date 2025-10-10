@@ -16,7 +16,7 @@ export NVM_DIR="$HOME/.nvm"
 . $HOME/.bash-prompt
 . $HOME/.profile
 # export PATH=${PATH}:/usr/bin/python3
-
+export PYTHON="/opt/homebrew/opt/python@3.11/bin/python3.11"
 HISTSIZE=
 HISTFILESIZE=
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
@@ -29,14 +29,14 @@ unset MAILCHECK
 # export PATH="/usr/local/opt/go@1.19/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # . "$HOME/.local/bin/env"
 
 # The next line updates PATH for CLI.
 if [ -f '/Users/dkunin/yandex-cloud/path.bash.inc' ]; then source '/Users/dkunin/yandex-cloud/path.bash.inc'; fi
-
+s
 # The next line enables shell command completion for yc.
 if [ -f '/Users/dkunin/yandex-cloud/completion.bash.inc' ]; then source '/Users/dkunin/yandex-cloud/completion.bash.inc'; fi
 
