@@ -49,3 +49,4 @@ export PATH="$HOME/go/bin:$PATH"
 
 export PATH="$(brew --prefix openjdk)/bin:$PATH"
 export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

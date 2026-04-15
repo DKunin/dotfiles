@@ -1,14 +1,12 @@
-// Use https://finicky-kickstart.now.sh to generate basic configuration
-// Learn more about configuration options: https://github.com/johnste/finicky/wiki/Configuration
+// Learn more: https://github.com/johnste/finicky/wiki/Configuration
 
 const BoardMixApp = {
   browser: ({ urlString }) => ({
     name: "Google Chrome",
-    // profile: "Profile 13", // use whatever profile created the application shortcut
+    // profile: "Profile 13",
     args: [
-      `--app-id=jeleglcnfdjhgfelgbmeplgiegkbkbjp`, // my app ID for my Google Meet application shortcut
+      "--app-id=jeleglcnfdjhgfelgbmeplgiegkbkbjp",
       `--app-launch-url-for-shortcuts-menu-item=${urlString}`,
-      // notice I'm not passing urlString as an array entry, since Chrome Application Shortcuts don't like that
     ],
   }),
 };
@@ -20,78 +18,89 @@ export default {
     checkForUpdate: true,
     logRequests: true,
   },
+
+  // ---------- REWRITE ----------
   rewrite: [
+    // 1) mattermost://...  →  https://...
     {
-      // Redirect all urls to use https
-      match: finicky.matchHostnames(/.*\.ktalk.ru/),
+      match: ({ url }) => url && url.protocol === "mattermost:",
       url: ({ url }) => {
-        return "http://127.0.0.1:44258/ktalk/app/open-url?url=" + url;
-      },
-    },
-
-    {
-      match: /vk\.com\/away.php/,
-      url: ({ url }) => {
-        const match = url.search.match(/to=(.+)/);
-        return !match ? url : decodeURIComponent(decodeURIComponent(match[1]));
-      },
-    },
-    {
-      match: () => true, // Execute rewrite on all incoming urls to make this example easier to understand
-      url: ({ url }) => {
-        const removeKeysStartingWith = ["utm_", "uta_"]; // Remove all query parameters beginning with these strings
-        const removeKeys = ["fbclid", "gclid"]; // Remove all query parameters matching these keys
-
+        const host = url.host || url.hostname || "";
+        const path = url.pathname || "";
         const search = url.search
-          .split("&")
-          .map((parameter) => parameter.split("="))
-          .filter(
-            ([key]) =>
-              !removeKeysStartingWith.some((startingWith) =>
-                key.startsWith(startingWith)
-              )
-          )
-          .filter(
-            ([key]) => !removeKeys.some((removeKey) => key === removeKey)
-          );
+          ? (url.search.startsWith("?") ? url.search : `?${url.search}`)
+          : "";
+        const hash = url.hash
+          ? (url.hash.startsWith("#") ? url.hash : `#${url.hash}`)
+          : "";
 
-        return {
-          ...url,
-          search: search.map((parameter) => parameter.join("=")).join("&"),
-        };
+        const httpsUrl = `https://${host}${path}${search}${hash}`;
+        // Немного логирования, чтобы видеть факт переписывания
+        try { console.log(`[finicky] mattermost→https: ${httpsUrl}`); } catch (e) {}
+        return httpsUrl;
       },
     },
+
+    // 2) VK away cleanup
     {
-      match: finicky.matchHostnames(["google.com"]),
+      match: ({ url }) => /vk\.com\/away\.php/i.test(url.host + url.pathname),
+      url: ({ url }) => {
+        const m = (url.search || "").match(/(?:\?|&)to=([^&]+)/);
+        return !m ? url : decodeURIComponent(decodeURIComponent(m[1]));
+      },
+    },
+
+    // 3) Удаляем трекинг-параметры (для всех URL)
+    {
+      match: () => true,
+      url: ({ url }) => {
+        const removeKeysStartingWith = ["utm_", "uta_"];
+        const removeKeys = ["fbclid", "gclid"];
+
+        const raw = (url.search || "").replace(/^\?/, "");
+        if (!raw) return url;
+
+        const kept = raw
+          .split("&")
+          .filter(Boolean)
+          .map((p) => p.split("="))
+          .filter(([k]) => k && !removeKeysStartingWith.some((pref) => k.startsWith(pref)))
+          .filter(([k]) => k && !removeKeys.includes(k))
+          .map((arr) => arr.join("="))
+          .join("&");
+
+        return { ...url, search: kept };
+      },
+    },
+
+    // 4) example redirect (google → duckduckgo)
+    {
+      match: ({ url }) => (url.host || "").toLowerCase() === "google.com",
       url: "https://duckduckgo.com",
     },
   ],
+
+  // ---------- HANDLERS ----------
   handlers: [
+    // mt.avito.ru → Chrome
     {
-      match: [
-        finicky.matchHostnames(/gitlab.senseai.pro/g),
-        finicky.matchHostnames(/console.yandex.cloud/g),
-        finicky.matchHostnames(/bot.senseai.pro/g),
-      ],
-      // Forward to Brave
-      browser: "Brave Browser",
-    },
-    {
-      match: [
-        finicky.matchHostnames(/mt.avito.ru/g),
-      ],
-      // Forward to Chrome
+      match: ({ url }) => /\.?mt\.avito\.ru$/i.test(url.host || ""),
       browser: "Google Chrome",
     },
+
+    // Эти — в Brave
+    {
+      match: ({ url }) =>
+        /(^|\.)gitlab\.senseai\.pro$/i.test(url.host || "") ||
+        /(^|\.)console\.yandex\.cloud$/i.test(url.host || "") ||
+        /(^|\.)bot\.senseai\.pro$/i.test(url.host || ""),
+      browser: "Brave Browser",
+    },
+
+    // Пример открытия Chrome App (оставлено как шаблон, закомментировано)
+    // {
+    //   match: ({ url }) => /(^|\.)boardmix\.com$/i.test(url.host || ""),
+    //   ...BoardMixApp,
+    // },
   ],
-  // handlers: [
-  //   {
-  //     match: [
-  //       // finicky.matchDomains(/boardmix.com/g) // use helper function to match on domain only
-  //     ],
-  //     // browser: "/Applications/Chrome\\ Apps.localized/BoardMix.app"
-  //     // browser: "Chrome"
-  //     ...BoardMixApp,
-  //   }
-  // ]
 };

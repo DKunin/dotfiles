@@ -27,7 +27,7 @@ alias mostused='cut -d " " -f1 ~/.bash_history | sort | uniq -c | sort -nr | hea
 
 # Requires specific structure
 alias code='cd $PROJECTS'
-alias know='cd $PROJECTS/knowledge'
+alias mai='cd $PROJECTS/make-action-items'
 alias dl='cd ~/Downloads'
 alias dt='cd ~/Desktop'
 alias dot='cd $DOTFILES'
