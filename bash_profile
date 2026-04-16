@@ -7,7 +7,28 @@
 [ -f $DOTFILES/completions/adb ] && . $DOTFILES/completions/adb
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+if [ -s "$NVM_DIR/nvm.sh" ]; then
+  _clean_path=
+  _old_ifs="$IFS"
+  IFS=':'
+  for _path_entry in $PATH; do
+    case "$_path_entry" in
+      "$NVM_DIR"/versions/*/bin) ;;
+      *)
+        if [ -n "$_clean_path" ]; then
+          _clean_path="${_clean_path}:$_path_entry"
+        else
+          _clean_path="$_path_entry"
+        fi
+      ;;
+    esac
+  done
+  IFS="$_old_ifs"
+  unset _old_ifs _path_entry
+  export PATH="$_clean_path"
+  unset _clean_path
+  . "$NVM_DIR/nvm.sh" --no-use
+fi
 
 . $HOME/.env
 . $HOME/.aliases
@@ -20,8 +41,6 @@ export PYTHON="/opt/homebrew/opt/python@3.11/bin/python3.11"
 HISTSIZE=
 HISTFILESIZE=
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
-
-nvm use default
 
 # Don't check mail when opening terminal.
 unset MAILCHECK
@@ -36,7 +55,6 @@ unset MAILCHECK
 
 # The next line updates PATH for CLI.
 if [ -f '/Users/dkunin/yandex-cloud/path.bash.inc' ]; then source '/Users/dkunin/yandex-cloud/path.bash.inc'; fi
-s
 # The next line enables shell command completion for yc.
 if [ -f '/Users/dkunin/yandex-cloud/completion.bash.inc' ]; then source '/Users/dkunin/yandex-cloud/completion.bash.inc'; fi
 
@@ -50,3 +68,5 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$(brew --prefix openjdk)/bin:$PATH"
 export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+nvm use default --delete-prefix --silent >/dev/null 2>&1 || nvm use default
