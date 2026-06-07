@@ -104,7 +104,11 @@ function smallerImage() {
 }
 
 function smaller() {
-	ffmpeg -i $1 -filter:v scale=480:-1 -c:a copy small-$1
+	local input="$1"
+	local output_dir="$(dirname "$input")"
+	local output_name="$(basename "$input")"
+
+	ffmpeg -i "$input" -filter:v scale=480:-2 -c:a copy "$output_dir/small-$output_name"
 }
 
 function base64() {
