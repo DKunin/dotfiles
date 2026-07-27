@@ -40,6 +40,22 @@ npm config set init-module ~/.npm-init.js
 - zprofile - profile for zsh
 - zshrc - zsh configuration
 
+# Shell-функции
+
+## uploadVideo
+
+Загружает видео в каталог `Videos` файлового сервера через SSH. Передача выполняется через `rsync`, поэтому прерванную загрузку большого файла можно продолжить повторным запуском команды.
+
+```console
+uploadVideo "/путь/к/video.mp4"
+```
+
+После изменения dotfiles обновите текущую Bash-сессию:
+
+```console
+source ~/.bash_profile
+```
+
 # completion file location
 
 ## Darwin
@@ -51,4 +67,3 @@ npm config set init-module ~/.npm-init.js
 ```
     /etc/bash_completion.d/
 ```
-

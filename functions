@@ -155,7 +155,20 @@ function fork() {
 # }
 
 function uploadVideo() {
-	scp $1 root@$KUNINS_BLOG_IP:/var/www/html/wp-content/uploads/$(date +'%Y/%m')
+	local video_path="${1:-}"
+	local destination="dekunin@62.217.190.139:/mnt/data/cloud/dekunin/files/Videos/"
+
+	if [[ -z "$video_path" ]]; then
+		echo "Usage: uploadVideo /path/to/video" >&2
+		return 1
+	fi
+
+	if [[ ! -f "$video_path" ]]; then
+		echo "uploadVideo: file not found: $video_path" >&2
+		return 1
+	fi
+
+	rsync --partial --progress -- "$video_path" "$destination"
 }
 
 function del-stopped (){
@@ -198,4 +211,3 @@ function undertale() {
 # function passer () {
 # 	gpg --pinentry-mode loopback -d "/Users/dikunin/.password-store/$1.gpg"
 # }
-
