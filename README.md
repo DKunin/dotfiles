@@ -10,6 +10,31 @@
 - user : Wakatime info
 - week : Displays current week number
 
+# xbar
+
+- `codex-limit.5m.sh` — показывает оставшийся лимит Codex и время сброса квоты. Запрос выполняется через SOCKS5-профиль приложения «Telegram via SOCKS», а авторизация читается из `~/.codex/auth.json`.
+
+Для установки создайте ссылку в каталоге плагинов xbar:
+
+```console
+ln -s "$DOTFILES/xbar/codex-limit.5m.sh" "$HOME/Library/Application Support/xbar/plugins/codex-limit.5m.sh"
+```
+
+Пути можно переопределить переменными `CODEX_AUTH_FILE` и `SOCKS_PROXY_CONFIG`.
+
+## Виджет Codex Limit для macOS
+
+Каталог `macos-widget` содержит нативное приложение с расширением WidgetKit для боковой панели «Центр уведомлений». Виджет показывает оставшийся основной лимит Codex и время сброса, используя те же файлы авторизации и SOCKS5-профиля.
+
+Сборка и установка:
+
+```console
+cd "$DOTFILES/macos-widget"
+./install.sh
+```
+
+После запуска приложения `Codex Limit` откройте «Центр уведомлений» → «Изменить виджеты» и добавьте `Codex Limit` в боковую панель. Нажатие на виджет сразу запрашивает свежие данные. WidgetKit также запрашивает обновление примерно каждые пять минут, но macOS может изменить фактический интервал.
+
 # sublime
 - TodoReview: Settings for TodoReview plugin
 - Snippets: snippets for sublime stuff, to link:

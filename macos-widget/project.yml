@@ -1,0 +1,76 @@
+name: CodexLimit
+options:
+  bundleIdPrefix: com.dkunin
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    DEVELOPMENT_TEAM: TYD943UHY7
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: Developer ID Application
+    SWIFT_VERSION: "6.0"
+    GENERATE_INFOPLIST_FILE: NO
+targets:
+  CodexLimit:
+    type: application
+    platform: macOS
+    sources:
+      - App
+      - Shared
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Codex Limit
+        CFBundleShortVersionString: "1.1.1"
+        CFBundleVersion: "4"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.dkunin.CodexLimit
+        PRODUCT_NAME: Codex Limit
+        CODE_SIGN_ENTITLEMENTS: App/CodexLimit.entitlements
+    dependencies:
+      - target: CodexLimitWidget
+        embed: true
+  CodexLimitWidget:
+    type: app-extension
+    platform: macOS
+    sources:
+      - Widget
+      - Shared
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: Codex Limit
+        CFBundleShortVersionString: "1.1.1"
+        CFBundleVersion: "4"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.dkunin.CodexLimit.Widget
+        PRODUCT_NAME: Codex Limit Widget
+        CODE_SIGN_ENTITLEMENTS: Widget/CodexLimitWidget.entitlements
+        APPLICATION_EXTENSION_API_ONLY: YES
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_OUTGOING_NETWORK_CONNECTIONS: YES
+        SKIP_INSTALL: YES
+  CodexLimitTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - Tests
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.dkunin.CodexLimitTests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  CodexLimit:
+    build:
+      targets:
+        CodexLimit: all
+        CodexLimitWidget: all
+        CodexLimitTests: [test]
+    test:
+      targets:
+        - CodexLimitTests

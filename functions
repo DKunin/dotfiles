@@ -150,9 +150,6 @@ function fork() {
 	disown
 }
 
-# function slackStatus() {
-#   curl -G -v -X POST --data-urlencode "profile={\"status_text\":\"$1\",\"status_emoji\":\"$2\"}" https://slack.com/api/users.profile.set?token=$SLACK_TOKEN
-# }
 
 function uploadVideo() {
 	local video_path="${1:-}"
@@ -193,15 +190,16 @@ function signal () {
 	 tput bel
 }
 
-function ghostmaster() {
-	wine /Users/dkunin/.wine/drive_c/GOG\ Games/Ghost\ Master/ghost.exe
-}
-
-function undertale() {
-	wine "/Users/dkunin/.wine/drive_c/Program Files (x86)/Undertale2/UNDERTALE.exe"
+function downloadTracklist() {
+    /Users/dkunin/.codex/skills/sync-youtube-music/scripts/sync_playlist.py "$1" "$2"
 }
 
 
+function tightIcons() {
+	defaults -currentHost write -globalDomain NSStatusItemSpacing -int 3
+	defaults -currentHost write -globalDomain NSStatusItemSelectionPadding -int 3
+	killall ControlCenter
+}
 
 # function pass () {
 # 	docker exec -it 6c91810513e1 pass $1 | pbcopy &&
